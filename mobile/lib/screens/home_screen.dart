@@ -132,15 +132,18 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Color.fromRGBO(146, 61, 65, 1),
           ),
           body: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.only(left: 30.0, right: 30.0),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Welcome,',
-                    style:
-                        TextStyle(fontSize: 50.0, fontWeight: FontWeight.w600),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      'Welcome,',
+                      style: TextStyle(
+                          fontSize: 50.0, fontWeight: FontWeight.w600),
+                    ),
                   ),
                   Text(
                     'Ashesi University Community',

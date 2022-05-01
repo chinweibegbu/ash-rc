@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/screens/home_screen.dart';
-//import 'package:mobile/screens/report_incident.dart';
 
 void main() {
   runApp(const MyApp());
