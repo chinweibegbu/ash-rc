@@ -1,7 +1,7 @@
 package com.Ashesi.ASHRC.Controllers;
 
 
-import com.Ashesi.ASHRC.Model.AdminDetails;
+import com.Ashesi.ASHRC.Model.UserDetails;
 import com.Ashesi.ASHRC.RepositoriesDAO.LoginRepository;
 import com.Ashesi.ASHRC.RepositoriesDAO.UserRepository;
 import org.hibernate.Session;
@@ -36,17 +36,17 @@ public class AdminController {
     @GetMapping("/dashboard")
     public String displayDashboard(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        List<AdminDetails> Emp = getAdmin((String)session.getAttribute("mail"));
+        List<UserDetails> Emp = getAdmin((String)session.getAttribute("mail"));
         model.addAttribute("loggedInAdmin",Emp.get(0));
         return "adminDashboard";
     }
 
-    public List<AdminDetails> getAdmin(String mail) {
+    public List<UserDetails> getAdmin(String mail) {
         Session currentSession = entityManager.unwrap(Session.class);
-        String hql = "FROM AdminDetails Emp WHERE Emp.email = :email";
+        String hql = "FROM UserDetails Emp WHERE Emp.email = :email";
         Query query = currentSession.createQuery(hql);
         query.setParameter("email",mail);
-        List<AdminDetails> results = query.getResultList();
+        List<UserDetails> results = query.getResultList();
         return results;
     }
 
@@ -54,7 +54,7 @@ public class AdminController {
     @GetMapping("/analytics")
     public String displayAnalyticsPage(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        List<AdminDetails> Emp = getAdmin((String)session.getAttribute("mail"));
+        List<UserDetails> Emp = getAdmin((String)session.getAttribute("mail"));
         model.addAttribute("loggedInAdmin",Emp.get(0));
         return "adminAnalytics";
     }
@@ -62,7 +62,7 @@ public class AdminController {
     @GetMapping("/respondents")
     public String displayRespondentManagementPage(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        List<AdminDetails> Emp = getAdmin((String)session.getAttribute("mail"));
+        List<UserDetails> Emp = getAdmin((String)session.getAttribute("mail"));
         model.addAttribute("loggedInAdmin",Emp.get(0));
         return "RespondentManagement";
     }
@@ -70,7 +70,7 @@ public class AdminController {
     @GetMapping("/settings")
     public String displaySettings(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        List<AdminDetails> Emp = getAdmin((String)session.getAttribute("mail"));
+        List<UserDetails> Emp = getAdmin((String)session.getAttribute("mail"));
         model.addAttribute("loggedInAdmin",Emp.get(0));
         return "Settings";
     }

@@ -16,6 +16,7 @@ public class IncidentDetails {
     private Date date = new Date();
     private String periodOfIncident;
     private String incidentDetails;
+    private String evidence;
     @ManyToOne
     @JoinColumn(name="role_id")
     private RoleDetails role_; //FK

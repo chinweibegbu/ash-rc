@@ -1,7 +1,7 @@
 package com.Ashesi.ASHRC.Controllers;
 
-import com.Ashesi.ASHRC.Model.AdminDetails;
 import com.Ashesi.ASHRC.Model.LoginDetails;
+import com.Ashesi.ASHRC.Model.UserDetails;
 import com.Ashesi.ASHRC.RepositoriesDAO.LoginRepository;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -56,11 +56,11 @@ public class LoginController {
     public String validateLogin(Model model,LoginDetails login_details,HttpServletRequest request) {
         Session currentSession = entityManager.unwrap(Session.class);
         // parse through employee details table in database to obtain record of user with specified username
-        String hql = "FROM AdminDetails E WHERE E.email = :userName and E.password= :passWord";
+        String hql = "FROM UserDetails E WHERE E.email = :userName and E.password= :passWord";
         Query query = currentSession.createQuery(hql);
         query.setParameter("userName", login_details.getUsername());
         query.setParameter("passWord", login_details.getPassword());
-        List<AdminDetails> results = query.getResultList();
+        List<UserDetails> results = query.getResultList();
         // if result is obtained call home page for employee. if not redirect to login
         if (results.size() >= 1) {
             HttpSession session=request.getSession();
