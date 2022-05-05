@@ -33,12 +33,12 @@ class TextInput extends StatelessWidget {
             prefixIcon: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Icon(icon, //specifies icon
-                  color: Colors.white,
+                  color: Color.fromRGBO(146, 61, 65, 1),
                   size: 30),
             ),
-            hintStyle: bodyText,
+            hintStyle: inputText,
           ),
-          style: bodyText,
+          style: inputText,
           keyboardType: inputType, //email vs password
           textInputAction: inputAction, // action button
         ),

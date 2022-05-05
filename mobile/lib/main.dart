@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/back-to-home.dart';
+import 'package:mobile/screens/reg-complete.dart';
+import 'package:mobile/screens/reg-conf-code.dart';
+import 'package:mobile/screens/reg-email-conf.dart';
+import 'package:mobile/screens/forgot-conf.dart';
+import 'package:mobile/screens/forgot-pw.dart';
 import 'package:mobile/screens/home_screen.dart';
+import 'package:mobile/screens/reg-new-user.dart';
+import 'package:mobile/screens/reset-passw.dart';
 import './screens/loginpage.dart';
 
 void main() {

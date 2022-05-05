@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import '../palatte.dart';
 
-class PasswordInput extends StatelessWidget {
-  //specifies details of password
-  const PasswordInput({
+class TextInputInverse extends StatelessWidget {
+  const TextInputInverse({
     Key? key,
     required this.icon,
     required this.hint,
+    required this.inputType,
     required this.inputAction,
   }) : super(key: key);
 
   final IconData icon;
   final String hint;
+  final TextInputType inputType;
   final TextInputAction inputAction;
 
   @override
@@ -21,7 +22,7 @@ class PasswordInput extends StatelessWidget {
           vertical: 12.0), // creates space between text boxes
       child: Container(
         decoration: BoxDecoration(
-          color: (Colors.white), // password box fill color
+          color: (Color.fromRGBO(146, 61, 65, 1)), // sets email icon color
           borderRadius: BorderRadius.circular(16),
         ),
         child: TextField(
@@ -32,13 +33,13 @@ class PasswordInput extends StatelessWidget {
             prefixIcon: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Icon(icon, //specifies icon
-                  color: Color.fromRGBO(146, 61, 65, 1),
+                  color: Colors.white,
                   size: 30),
             ),
             hintStyle: inputText,
           ),
-          obscureText: true, //hides input text
           style: inputText,
+          keyboardType: inputType, //email vs password
           textInputAction: inputAction, // action button
         ),
       ),

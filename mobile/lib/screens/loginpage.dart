@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mobile/widgets/ashesilogo.dart';
 import '../palatte.dart';
 import '../widgets/password-input.dart';
 import '../widgets/widgets.dart';
@@ -12,6 +15,7 @@ class LoginPage extends StatelessWidget {
     return Stack(
       children: [
         BackgroundImage(),
+        // AshesiLogo(),
         Scaffold(
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
@@ -19,16 +23,44 @@ class LoginPage extends StatelessWidget {
             child: SafeArea(
               child: Column(
                 children: [
+                  SizedBox(
+                      height: 100), // space between Safe Haven and notif bar
                   Container(
-                    height: 150,
-                    child: Center(
-                      child: Text(
-                        'Safe Haven',
-                        style: heading,
+                    height: 253, // space between Safe Haven label and Email
+                    // maximum width
+                    // child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: Alignment(-1.20, 1),
+                            child: Text(
+                              'Safe Haven',
+                              style: safeHavenHeading,
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment(-25, 1),
+                            child: Text(
+                              'Promoting a safe and secure campus',
+                              style: safeAndSec,
+                            ),
+                          ),
+                          SizedBox(height: 9),
+                          Align(
+                            alignment: Alignment(-20, 1),
+                            child: Text(
+                              'Safe Haven provides students with resources to securely report instances of sexual violence. The service also provides victims with access to school provided counselors and trained professionals',
+                              style: caption,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+                    // ),
                   ),
-                  SizedBox(height: 100),
+                  SizedBox(height: 10), // spacing between caption and email
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
@@ -79,7 +111,7 @@ class LoginPage extends StatelessWidget {
                             // ),
                             Text(
                               'Forgot Password?',
-                              style: bodyText,
+                              style: inputText,
                             ),
                           ],
                         ),
@@ -87,12 +119,12 @@ class LoginPage extends StatelessWidget {
                           children: [
                             SizedBox(
                                 height:
-                                    (100)), // spacing between forgot password & login button
+                                    (10)), // spacing between forgot password & login button
                             RoundedButton(
                                 buttonText:
                                     'Login'), //sets newly created button widget's value
                             SizedBox(
-                              height: 80,
+                              height: 10, // space between login and register
                             ),
                             Container(
                               decoration: BoxDecoration(
@@ -102,7 +134,7 @@ class LoginPage extends StatelessWidget {
                               )),
                               child: Text(
                                 'Register New Account',
-                                style: bodyText,
+                                style: inputText,
                               ),
                             ),
                             SizedBox(

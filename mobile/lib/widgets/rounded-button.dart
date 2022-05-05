@@ -15,7 +15,8 @@ class RoundedButton extends StatelessWidget {
     return Container(
         width: double.infinity,
         decoration: BoxDecoration(
-            color: Colors.red, borderRadius: BorderRadius.circular(16)),
+            color: Color.fromRGBO(146, 61, 65, 1),
+            borderRadius: BorderRadius.circular(16)),
         child: TextButton(
           onPressed: () {}, // sets navigation for when login button is hit
           child: Padding(
@@ -23,7 +24,7 @@ class RoundedButton extends StatelessWidget {
                 vertical: 20.0), //height of box/placement
             child: Text(
               buttonText,
-              style: bodyText,
+              style: redButton,
             ),
           ),
         ));

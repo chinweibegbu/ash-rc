@@ -10,9 +10,12 @@ class BackgroundImage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage('assets/images/ashesiBG.jpg'),
+        image: AssetImage(
+          'assets/images/ashesiBG.jpg',
+        ),
         fit: BoxFit.cover,
-        colorFilter: ColorFilter.mode(Colors.black, BlendMode.lighten),
+        colorFilter:
+            ColorFilter.mode(Colors.white.withOpacity(.75), BlendMode.lighten),
       )),
     );
   }
