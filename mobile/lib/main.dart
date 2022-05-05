@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/home_screen.dart';
+import './screens/loginpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ASH-RC',
       // ignore: prefer_const_constructors
-      home: HomeScreen(),
+      home: LoginPage(),
     );
   }
 }
