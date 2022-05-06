@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/home_screen.dart';
 
 class MyForm extends StatefulWidget {
   const MyForm({Key? key}) : super(key: key);
@@ -10,10 +11,23 @@ class MyForm extends StatefulWidget {
 }
 
 class _MyFormState extends State<MyForm> {
-  int currentIndex = 0;
+  // Index of current screen (reference: bottom navigation bar)
+  int currentIndex = 2;
+
+  // Incident form default date
   DateTime selectedDate = DateTime.now();
+
+  // Incident form check boxes
   bool isBystanderChecked = false;
   bool isReportChecked = false;
+
+  List<Widget> screens = [
+    HomeScreen(),
+    HomeScreen(),
+    MyForm(),
+    HomeScreen(),
+    HomeScreen()
+  ];
 
   List<DropdownMenuItem<int>> communityRoleList = [
     const DropdownMenuItem(
@@ -79,7 +93,8 @@ class _MyFormState extends State<MyForm> {
                             style:
                                 TextStyle(fontSize: 24.0, color: Colors.white)),
                         onTap: () {
-                          Navigator.pop(context);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
                         },
                       ),
                       ListTile(
@@ -315,8 +330,12 @@ class _MyFormState extends State<MyForm> {
           ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex: 2,
-            onTap: (index) => setState(() => currentIndex = index),
+            currentIndex: currentIndex,
+            onTap: (index) => {
+              if (index != currentIndex)
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => screens[index]))
+            },
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
