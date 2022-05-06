@@ -12,6 +12,8 @@ class MyForm extends StatefulWidget {
 class _MyFormState extends State<MyForm> {
   int currentIndex = 0;
   DateTime selectedDate = DateTime.now();
+  bool isBystanderChecked = false;
+  bool isReportChecked = false;
 
   List<DropdownMenuItem<int>> communityRoleList = [
     const DropdownMenuItem(
@@ -154,17 +156,57 @@ class _MyFormState extends State<MyForm> {
                   children: <Widget>[
                     Align(
                         alignment: Alignment.topLeft,
-                        child: const Text('* Mandatory field')),
-                    DropdownButton(
+                        child: Row(children: [
+                          const Text(
+                            '*',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                          const Text('Mandatory field'),
+                        ])),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15.0, bottom: 5.0),
+                      child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Row(children: [
+                            const Text('Community Member Role'),
+                            const Text(
+                              '*',
+                              style: TextStyle(color: Colors.red),
+                            )
+                          ])),
+                    ),
+                    DropdownButtonFormField(
                       onChanged: (value) {},
                       items: communityRoleList,
                       hint: const Text('Select role'),
                       isExpanded: true,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                        borderSide: BorderSide(width: 3, color: Colors.grey),
+                        borderRadius: BorderRadius.circular(5),
+                      )),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0, bottom: 5.0),
+                      child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Row(children: [
+                            const Text('Incident Details'),
+                            const Text(
+                              '*',
+                              style: TextStyle(color: Colors.red),
+                            )
+                          ])),
                     ),
                     TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Incident Details*',
+                      decoration: InputDecoration(
+                        //labelText: 'Incident Details*',
                         hintText: 'Insert incident details',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 3, color: Colors.grey),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -172,38 +214,87 @@ class _MyFormState extends State<MyForm> {
                         }
                         return null;
                       },
+                      maxLines: 10,
                     ),
-                    CalendarDatePicker(
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime.now(),
-                        initialDate: selectedDate,
-                        onDateChanged: (date) {
-                          setState(() {
-                            selectedDate = date;
-                          });
-                        }),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Align(
+                          alignment: Alignment.topLeft,
+                          child: const Text('Incident Date')),
+                    ),
+                    OutlinedButton(
+                      onPressed: () {
+                        _selectDate(context);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          Icon(
+                            Icons.date_range_outlined,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                      style: ButtonStyle(
+                        side: MaterialStateProperty.resolveWith(
+                            (states) => BorderSide(color: Colors.grey)),
+                        alignment: Alignment.centerLeft,
+                        backgroundColor: MaterialStateColor.resolveWith(
+                            (states) => Colors.transparent),
+                        minimumSize: MaterialStateProperty.resolveWith(
+                            (states) => Size.fromHeight(40)),
+                        //shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        //borderRadius: BorderRadius.circular(30.0), borderSide: BorderSide()),
+                      ),
+                    ),
                     CheckboxListTile(
-                      onChanged: (value) {},
-                      value: true,
+                      activeColor: Color.fromRGBO(146, 61, 65, 1),
+                      contentPadding: EdgeInsets.zero,
+                      value: isBystanderChecked,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isBystanderChecked = value!;
+                        });
+                      },
                       controlAffinity: ListTileControlAffinity.leading,
                       title: const Text(
                         'I am a bystander',
                       ),
                     ),
-                    CheckboxListTile(
-                      onChanged: (value) {},
-                      value: true,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      title: const Text(
-                        'I would like to file a report',
+                    if (!isBystanderChecked)
+                      CheckboxListTile(
+                        activeColor: Color.fromRGBO(146, 61, 65, 1),
+                        contentPadding: EdgeInsets.zero,
+                        value: isReportChecked,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isReportChecked = value!;
+                          });
+                        },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        title: const Text(
+                          'I would like to file a report',
+                        ),
                       ),
-                    ),
-                    ElevatedButton(
+                    OutlinedButton.icon(
+                      icon: Icon(
+                        Icons.attachment,
+                        color: Colors.black,
+                      ),
                       onPressed: () {},
-                      child: const Text('Upload evidence'),
+                      label: const Text(
+                        'Upload evidence',
+                        style: TextStyle(color: Colors.black),
+                      ),
                       style: ButtonStyle(
+                          side: MaterialStateProperty.resolveWith(
+                              (states) => BorderSide(color: Colors.grey)),
                           backgroundColor: MaterialStateColor.resolveWith(
-                              (states) => Color.fromRGBO(146, 61, 65, 1)),
+                              (states) => Colors.transparent),
                           fixedSize: MaterialStateProperty.resolveWith(
                               (states) => Size(275.0, 10.0))),
                     ),
@@ -254,5 +345,18 @@ class _MyFormState extends State<MyForm> {
         ),
       ),
     );
+  }
+
+  _selectDate(BuildContext context) async {
+    final DateTime? selected = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime.now(),
+    );
+    if (selected != null && selected != selectedDate)
+      setState(() {
+        selectedDate = selected;
+      });
   }
 }
