@@ -23,6 +23,4 @@ public class Request {
     @ManyToOne
     @JoinColumn(name="userId")
     private UserDetails user; //FK
-    @Transient
-    private int userId = user.getUserId();
 }
