@@ -16,7 +16,7 @@ public class IncidentDetails {
     private Date date = new Date();
     private String periodOfIncident;
     private String incidentDetails;
-    private String evidence;
+    private String evidence;    // Future work
     @ManyToOne
     @JoinColumn(name="role_id")
     private RoleDetails role_; //FK
@@ -25,7 +25,6 @@ public class IncidentDetails {
     @ManyToOne
     @JoinColumn(name="respondent_ID")
     private RespondentDetails respondent; //FK
-    private String requestedServices;
     @ManyToOne
     @JoinColumn(name="userId")
     private UserDetails user; //FK
