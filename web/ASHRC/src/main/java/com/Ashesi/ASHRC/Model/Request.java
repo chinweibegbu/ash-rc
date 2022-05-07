@@ -6,6 +6,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Data
 @Entity
 public class Request {
@@ -17,9 +19,10 @@ public class Request {
     @JoinColumn(name="respondent_ID")
     private RespondentDetails respondent; //FK
     private String requestedServices;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="userId")
     private UserDetails user; //FK
-
-
+    @Transient
+    private int userId = user.getUserId();
 }

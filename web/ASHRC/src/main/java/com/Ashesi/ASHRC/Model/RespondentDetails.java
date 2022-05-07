@@ -29,5 +29,10 @@ public class RespondentDetails {
     private String lastName;
     private String department;
     private String phoneNumber;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="respondent", cascade = CascadeType.ALL)
+	@ElementCollection(fetch=FetchType.EAGER)
+	private Collection<Request> requests = new ArrayList<>();
     
 }
