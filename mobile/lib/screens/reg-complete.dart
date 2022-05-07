@@ -15,17 +15,18 @@ class RegComplete extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Color.fromRGBO(146, 61, 65, 1),
-            leading: IconButton(
-              // allows left aligned icon
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                // do something
-              },
-            )),
+          backgroundColor: Color.fromRGBO(146, 61, 65, 1),
+          // leading: IconButton(
+          //   // allows left aligned icon
+          //   icon: Icon(
+          //     Icons.arrow_back,
+          //     color: Colors.white,
+          //   ),
+          //   onPressed: () {
+          //     // do something
+          //   },
+          // )
+        ),
         body: Column(
           children: [
             SizedBox(height: 50),

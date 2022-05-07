@@ -8,7 +8,7 @@ import '../palatte.dart';
 import '../widgets/password-input.dart';
 import '../widgets/widgets.dart';
 
-class RegConfirmationCode extends StatelessWidget {
+class RegConfCode extends StatelessWidget {
   // const LoginPage({ Key? key }) : super(key: key);
 
   @override

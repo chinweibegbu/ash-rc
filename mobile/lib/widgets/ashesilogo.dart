@@ -9,16 +9,28 @@ class AshesiLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(
-        image: AssetImage(
-          'assets/images/ashesilogo.png',
-        ),
-        // fit: BoxFit.cover,
-        // colorFilter:
-        //     ColorFilter.mode(Colors.white.withOpacity(.65), BlendMode.lighten),
-      )),
-    );
+    // return Container(
+    //   decoration: BoxDecoration(
+    //       image: DecorationImage(
+    //     image: AssetImage(
+    //       'assets/images/ashesilogo.png',
+    //     ),
+
+    // fit: BoxFit.cover,
+    // colorFilter:
+    //     ColorFilter.mode(Colors.white.withOpacity(.65), BlendMode.lighten),
+    //   )),
+    // );
+
+    return Scaffold(
+        body: SafeArea(
+      child: Container(
+          child: ClipRRect(
+              child: Image.asset(
+        'assets/images/ashesilogo.png',
+        width: 400,
+        height: 400,
+      ))),
+    ));
   }
 }
