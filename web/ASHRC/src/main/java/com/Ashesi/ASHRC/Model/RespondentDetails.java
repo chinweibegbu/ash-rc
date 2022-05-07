@@ -2,10 +2,19 @@ package com.Ashesi.ASHRC.Model;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
@@ -19,6 +28,6 @@ public class RespondentDetails {
     private String firstName;
     private String lastName;
     private String department;
-    private int phoneNumber;
-
+    private String phoneNumber;
+    
 }
