@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:mobile/screens/report_incident.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 
@@ -136,9 +137,10 @@ class _sosbuttonState extends State<sosbutton_screen> {
           ),
           body: Column(children: [
             Padding(
-              padding: const EdgeInsets.only(top: 100.0),
+              padding: const EdgeInsets.only(top: 80.0),
             ),
-            Center(
+            Container(
+              alignment: AlignmentDirectional.center,
               child: ElevatedButton(
                 child: const Text(
                   "SOS",
@@ -148,7 +150,6 @@ class _sosbuttonState extends State<sosbutton_screen> {
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                 ),
-                
                 onPressed: () => {},
                 onLongPress: () => {},
                 style: ButtonStyle(
@@ -157,18 +158,15 @@ class _sosbuttonState extends State<sosbutton_screen> {
                       Color.fromARGB(255, 255, 79, 88)),
                   shape: MaterialStateProperty.all<CircleBorder>(
                     CircleBorder(
-                     
-                      side:BorderSide(color: Color.fromARGB(255, 243, 174, 170),width: 25),
-                        
-                      ),
-                    
+                      side: BorderSide(
+                          color: Color.fromARGB(255, 243, 174, 170), width: 25),
+                    ),
                   ),
-               
                 ),
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 20.0),
+              padding: const EdgeInsets.only(top: 10.0),
               child: Text(
                 "KEEP CALM!",
                 style: TextStyle(
@@ -177,225 +175,38 @@ class _sosbuttonState extends State<sosbutton_screen> {
               ),
             ),
             Container(child: Text("Help is on the way!")),
-            /*Container(
+            Container(
+              height: 85,
               child: ListView(
-          children: <Widget>[
-            Builder(
-              builder: (context) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(),
-                );
-              },
-            ),
-            Builder(
-              builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    key: _key,
-                    onSubmit: () {
-                      Future.delayed(
-                        Duration(seconds: 1),
-                        //() => _key.currentState.reset(),
+                children: <Widget>[
+                  Builder(
+                    builder: (context) {
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 15, bottom: 5),
+                        child: SlideAction(
+                          height: 60,
+                          sliderButtonIcon: Icon(
+                            Icons.phone,
+                            color: Color.fromRGBO(146, 61, 65, 1),
+                          ),
+                          sliderButtonIconPadding: 9,
+                          child: Text(
+                            "Slide for emergency call",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                          ),
+                          innerColor: Colors.white,
+                          outerColor: Colors.grey.shade200,
+                        ),
                       );
                     },
                   ),
-                );
-              },
+                ],
+              ),
             ),
-            Builder(
-              builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    key: _key,
-                    onSubmit: () {
-                      Future.delayed(
-                        Duration(seconds: 1),
-                        //() => _key.currentState.reset(),
-                      );
-                    },
-                    innerColor: Colors.black,
-                    outerColor: Colors.white,
-                  ),
-                );
-              },
-            ),
-            Builder(
-              builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    key: _key,
-                    onSubmit: () {
-                      Future.delayed(
-                        Duration(seconds: 1),
-                        //() => _key.currentState.reset(),
-                      );
-                    },
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      'Unlock',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    sliderButtonIcon: Icon(Icons.lock),
-                  ),
-                );
-              },
-            ),
-            Builder(
-              builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    key: _key,
-                    onSubmit: () {
-                      Future.delayed(
-                        Duration(seconds: 1),
-                        //() => _key.currentState.reset(),
-                      );
-                    },
-                    height: 100,
-                  ),
-                );
-              },
-            ),
-            Builder(
-              builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    key: _key,
-                    onSubmit: () {
-                      Future.delayed(
-                        Duration(seconds: 1),
-                        //() => _key.currentState.reset(),
-                      );
-                    },
-                    sliderButtonIconSize: 48,
-                    sliderButtonYOffset: -20,
-                  ),
-                );
-              },
-            ),
-            Builder(
-              builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    key: _key,
-                    onSubmit: () {
-                      Future.delayed(
-                        Duration(seconds: 1),
-                        //() => _key.currentState.reset(),
-                      );
-                    },
-                    elevation: 24,
-                  ),
-                );
-              },
-            ),
-            Builder(
-              builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    key: _key,
-                    onSubmit: () {
-                      Future.delayed(
-                        Duration(seconds: 1),
-                        //() => _key.currentState.reset(),
-                      );
-                    },
-                    borderRadius: 16,
-                    animationDuration: Duration(seconds: 1),
-                  ),
-                );
-              },
-            ),
-            Builder(
-              builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    key: _key,
-                    onSubmit: () {
-                      Future.delayed(
-                        Duration(seconds: 1),
-                        //() => _key.currentState.reset(),
-                      );
-                    },
-                    reversed: true,
-                  ),
-                );
-              },
-            ),
-            Builder(
-              builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    key: _key,
-                    onSubmit: () {
-                      Future.delayed(
-                        Duration(seconds: 1),
-                        //() => _key.currentState.reset(),
-                      );
-                    },
-                    submittedIcon: Icon(
-                      Icons.done_all,
-                      color: Colors.white,
-                    ),
-                  ),
-                );
-              },
-            ),
-            Builder(
-              builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    key: _key,
-                    onSubmit: () {
-                      Future.delayed(
-                        Duration(seconds: 1),
-                        //() => _key.currentState.reset(),
-                      );
-                    },
-                  ),
-                );
-              },
-            ),
-            Builder(
-              builder: (context) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SlideAction(
-                    sliderRotate: false,
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-      ),*/
           ]),
-
-
-
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: currentIndex,
