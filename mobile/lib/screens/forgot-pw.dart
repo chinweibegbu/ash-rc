@@ -60,7 +60,23 @@ class ForgotPassword extends StatelessWidget {
             SizedBox(height: 24),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40.0),
-              child: RoundedButton(buttonText: 'Send Confirmation Code'),
+              child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Color.fromRGBO(146, 61, 65, 1),
+                      borderRadius: BorderRadius.circular(16)),
+                  child: TextButton(
+                    onPressed:
+                        () {}, // sets navigation for when login button is hit
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20.0), //height of box/placement
+                      child: Text(
+                        'Send Confirmation Code',
+                        style: redButton,
+                      ),
+                    ),
+                  )),
             ),
           ],
         ));

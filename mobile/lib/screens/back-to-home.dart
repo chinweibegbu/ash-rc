@@ -50,9 +50,26 @@ class GoHome extends StatelessWidget {
             ),
             SizedBox(height: 39),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40.0),
-              child: RoundedButton(buttonText: 'Back to Login'),
-            ),
+                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(146, 61, 65, 1),
+                        borderRadius: BorderRadius.circular(16)),
+                    child: TextButton(
+                      onPressed:
+                          () {}, // sets navigation for when login button is hit
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20.0), //height of box/placement
+                        child: Text(
+                          'Back to Login',
+                          style: redButton,
+                        ),
+                      ),
+                    ))
+                // RoundedButton(buttonText: 'Back to Login'),
+                ),
           ],
         ));
   }
