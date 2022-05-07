@@ -68,7 +68,7 @@ public class UserController {
     }
 
     @DeleteMapping(path="{userId}")
-    public void deleteRole(@PathVariable("userId") Integer userId) {
+    public void delete(@PathVariable("userId") Integer userId) {
         // Get shopper with the given ID
 		boolean exists = userRepo.existsById(userId);
 		
@@ -77,5 +77,16 @@ public class UserController {
         }
 		
 		userRepo.deleteById(userId);
+    }
+
+    @PostMapping("/login")
+    public Integer Login(@RequestBody UserDetails user) {
+        Optional<UserDetails> registeredUser = userRepo.getUserDetailsByEmailAndPassword(user.getEmail(), user.getPassword());
+
+        if(!registeredUser.isPresent()) {
+            throw new IllegalStateException("Incorrect email address or password");
+        }
+
+        return registeredUser.get().getUserId();
     }
 }
