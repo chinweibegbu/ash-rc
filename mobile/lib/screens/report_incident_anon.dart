@@ -3,17 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/home_screen.dart';
 
-class MyForm extends StatefulWidget {
-  const MyForm({Key? key}) : super(key: key);
+class MyAnonForm extends StatefulWidget {
+  const MyAnonForm({Key? key}) : super(key: key);
 
   @override
-  State<MyForm> createState() => _MyFormState();
+  State<MyAnonForm> createState() => _MyAnonFormState();
 }
 
-class _MyFormState extends State<MyForm> {
-  // Index of current screen (reference: bottom navigation bar)
-  int currentIndex = 2;
-
+class _MyAnonFormState extends State<MyAnonForm> {
   // Incident form default date
   DateTime selectedDate = DateTime.now();
 
@@ -24,7 +21,7 @@ class _MyFormState extends State<MyForm> {
   List<Widget> screens = [
     HomeScreen(),
     HomeScreen(),
-    MyForm(),
+    MyAnonForm(),
     HomeScreen(),
     HomeScreen()
   ];
@@ -53,111 +50,6 @@ class _MyFormState extends State<MyForm> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          drawer: Drawer(
-            backgroundColor: Color.fromRGBO(146, 61, 65, 1),
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                DrawerHeader(
-                  decoration: BoxDecoration(
-                    border: Border(),
-                  ),
-                  child: Center(
-                    child: Row(children: [
-                      CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/images/profile.jpg'),
-                        radius: 50.0,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Text(
-                          'Miriam Duke',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                      )
-                    ]),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: Column(
-                    children: [
-                      ListTile(
-                        leading: const Icon(
-                          Icons.house,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                        title: const Text('Home',
-                            style:
-                                TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
-                        },
-                      ),
-                      ListTile(
-                        leading: const Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                        title: const Text('My profile',
-                            style:
-                                TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: const Icon(
-                          Icons.people,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                        title: const Text('Community',
-                            style:
-                                TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: const Icon(
-                          Icons.report,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                        title: const Text('Report Incident',
-                            style:
-                                TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: const Icon(
-                          Icons.info,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                        title: const Text('Info',
-                            style:
-                                TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: const Icon(
-                          Icons.settings,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                        title: const Text('Settings',
-                            style:
-                                TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
           appBar: AppBar(
             title: const Text('Report Incident'),
             backgroundColor: Color.fromRGBO(146, 61, 65, 1),
@@ -229,7 +121,7 @@ class _MyFormState extends State<MyForm> {
                         }
                         return null;
                       },
-                      maxLines: 10,
+                      maxLines: 7,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
@@ -280,21 +172,6 @@ class _MyFormState extends State<MyForm> {
                         'I am a bystander',
                       ),
                     ),
-                    if (!isBystanderChecked)
-                      CheckboxListTile(
-                        activeColor: Color.fromRGBO(146, 61, 65, 1),
-                        contentPadding: EdgeInsets.zero,
-                        value: isReportChecked,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            isReportChecked = value!;
-                          });
-                        },
-                        controlAffinity: ListTileControlAffinity.leading,
-                        title: const Text(
-                          'I would like to file a report',
-                        ),
-                      ),
                     OutlinedButton.icon(
                       icon: Icon(
                         Icons.attachment,
@@ -327,39 +204,6 @@ class _MyFormState extends State<MyForm> {
                 ),
               ),
             ),
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: currentIndex,
-            onTap: (index) => {
-              if (index != currentIndex)
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => screens[index]))
-            },
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: "Home",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.info),
-                label: "Info",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.report),
-                label: "Report",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.chat),
-                label: "Chat",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.gps_fixed),
-                label: "Emergency",
-              )
-            ],
-            backgroundColor: Colors.white,
-            selectedItemColor: Color.fromRGBO(146, 61, 65, 1),
           ),
         ),
       ),

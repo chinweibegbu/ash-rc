@@ -12,8 +12,8 @@ import javax.persistence.*;
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int userId;
-    private String fName;
-    private String lName;
+    private String firstName;
+    private String lastName;
     private String yearGroup;
     private String department;
     private String password;

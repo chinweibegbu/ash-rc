@@ -13,6 +13,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
 
+  List<Widget> screens = [
+    HomeScreen(),
+    HomeScreen(),
+    MyForm(),
+    HomeScreen(),
+    HomeScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -287,7 +295,11 @@ class _HomeScreenState extends State<HomeScreen> {
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: currentIndex,
-            onTap: (index) => setState(() => currentIndex = index),
+            onTap: (index) => {
+              if (index != currentIndex)
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => screens[index]))
+            },
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),

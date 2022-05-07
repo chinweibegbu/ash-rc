@@ -17,6 +17,6 @@ public class OffenderDetails {
     private int offender_ID;
     private String firstName;
     private String lastName;
-    private String yearGroup;
+    private String email;
 
 }
