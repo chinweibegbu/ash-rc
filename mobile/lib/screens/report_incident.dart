@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/home_screen.dart';
+import 'package:mobile/screens/sensitization.dart';
+import 'package:mobile/screens/sosbutton_screen.dart';
 
 class MyForm extends StatefulWidget {
   const MyForm({Key? key}) : super(key: key);
@@ -338,15 +341,38 @@ class _MyFormState extends State<MyForm> {
               ),
             ),
           ),
-          bottomNavigationBar: BottomNavigationBar(
+         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex: currentIndex,
+            currentIndex: 2,
             onTap: (index) => {
               if (index != currentIndex)
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => screens[index]))
+                if (index == 0)
+                  {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => screens[index])),
+                  },
+              if (index == 1)
+                {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) =>const Sensitization())),
+                },
+              if (index == 2)
+                {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const MyForm())),
+                },
+                
+              if (index == 3){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const ChatBotScreen())),
+                },
+
+              if(index==4){
+                   Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const sosbutton_screen())),
+              },
             },
-            items: [
+            items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: "Home",
@@ -383,9 +409,10 @@ class _MyFormState extends State<MyForm> {
       firstDate: DateTime(2000),
       lastDate: DateTime.now(),
     );
-    if (selected != null && selected != selectedDate)
+    if (selected != null && selected != selectedDate) {
       setState(() {
         selectedDate = selected;
       });
+    }
   }
 }

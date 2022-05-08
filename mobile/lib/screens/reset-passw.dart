@@ -29,74 +29,72 @@ class PasswordReset extends StatelessWidget {
                 // do something
               },
             )),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 50),
-              Align(
-                alignment: Alignment(-.50, 0),
+        body: Column(
+          children: [
+            SizedBox(height: 50),
+            Align(
+              alignment: Alignment(-.50, 0),
+              child: Text(
+                'Password Reset',
+                style: redBold,
+              ),
+            ),
+            SizedBox(height: 9),
+            Align(
+              alignment: Alignment(-1.08, 1),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: Text(
-                  'Password Reset',
-                  style: redBold,
+                  'Please enter your new password ',
+                  style: caption,
                 ),
               ),
-              SizedBox(height: 9),
-              Align(
-                alignment: Alignment(-1.08, 1),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                  child: Text(
-                    'Please enter your new password ',
-                    style: caption,
-                  ),
-                ),
+            ),
+            SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              child: PasswordInput(
+                icon: FontAwesomeIcons.lockOpen,
+                hint: "Enter New Password",
+                //inputType: TextInputType.visiblePassword,
+                inputAction: TextInputAction.next,
+                controller: passwordController,
               ),
-              SizedBox(height: 15),
-              Padding(
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              child: RepeatPasswordInput(
+                icon: FontAwesomeIcons.lock,
+                hint: "Re-Enter New Password",
+                //inputType: TextInputType.visiblePassword,
+                inputAction: TextInputAction.next,
+                controller: repeatPasswordController,
+                refController: passwordController,
+              ),
+            ),
+            SizedBox(height: 24),
+            Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                child: PasswordInput(
-                  icon: FontAwesomeIcons.lockOpen,
-                  hint: "Enter New Password",
-                  //inputType: TextInputType.visiblePassword,
-                  inputAction: TextInputAction.next,
-                  controller: passwordController,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                child: RepeatPasswordInput(
-                  icon: FontAwesomeIcons.lock,
-                  hint: "Re-Enter New Password",
-                  //inputType: TextInputType.visiblePassword,
-                  inputAction: TextInputAction.next,
-                  controller: repeatPasswordController,
-                  refController: passwordController,
-                ),
-              ),
-              SizedBox(height: 24),
-              Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                  child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(146, 61, 65, 1),
-                          borderRadius: BorderRadius.circular(16)),
-                      child: TextButton(
-                        onPressed:
-                            () {}, // sets navigation for when login button is hit
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 20.0), //height of box/placement
-                          child: Text(
-                            'Reset Password',
-                            style: redButton,
-                          ),
+                child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(146, 61, 65, 1),
+                        borderRadius: BorderRadius.circular(16)),
+                    child: TextButton(
+                      onPressed:
+                          () {}, // sets navigation for when login button is hit
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20.0), //height of box/placement
+                        child: Text(
+                          'Reset Password',
+                          style: redButton,
                         ),
-                      ))
-                  // RoundedButton(buttonText: 'Reset Password'),
-                  ),
-            ],
-          ),
+                      ),
+                    ))
+                // RoundedButton(buttonText: 'Reset Password'),
+                ),
+          ],
         ));
   }
 

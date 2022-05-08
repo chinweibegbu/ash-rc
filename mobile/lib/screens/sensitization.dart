@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/report_incident.dart';
+import 'package:mobile/screens/sosbutton_screen.dart';
 
 class Sensitization extends StatefulWidget {
   const Sensitization({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class _Sensitization extends State<Sensitization> {
 
   @override
   Widget build(BuildContext context) {
+    //var screens;
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -358,9 +361,43 @@ class _Sensitization extends State<Sensitization> {
           ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex: currentIndex,
-            onTap: (index) => setState(() => currentIndex = index),
-            items: [
+            currentIndex: 1,
+            
+            onTap: (index) => {
+              setState((){
+
+              },
+              ),
+              
+              if (index != currentIndex)
+                if (index == 0)
+                  {
+                   // Navigator.of(context).push(
+                      //MaterialPageRoute(
+                        //builder: (context) => screens[index])),
+                  },
+              if (index == 1)
+                {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) =>const Sensitization())),
+                },
+              if (index == 2)
+                {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const MyForm())),
+                },
+                
+              if (index == 3){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const ChatBotScreen())),
+                },
+
+              if(index==4){
+                   Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const sosbutton_screen())),
+              },
+            },
+            items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: "Home",
@@ -379,11 +416,13 @@ class _Sensitization extends State<Sensitization> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.gps_fixed),
+                activeIcon: Icon(Icons.gps_fixed),
                 label: "Emergency",
               )
             ],
             backgroundColor: Colors.white,
             selectedItemColor: Color.fromRGBO(146, 61, 65, 1),
+            
           ),
         ),
       ),

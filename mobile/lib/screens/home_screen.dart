@@ -3,8 +3,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/report_incident.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobile/screens/sensitization.dart';
+import 'package:mobile/screens/sosbutton_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key, required this.userId}) : super(key: key);
@@ -29,9 +32,23 @@ class HomeScreen extends StatelessWidget {
     )
   ];
 
+  Future<String> getCurrentUser(int userId, BuildContext context) async {
+    final response = await http.get(
+      Uri.parse('http://10.0.2.2:8081/user/$userId'),
+    );
+
+    if (response.statusCode == 200) {
+      final user = json.decode(response.body);
+      userName = user['firstName'] + ' ' + user['lastName'];
+      return userName;
+    } else {
+      throw Exception("User retrieval failed");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    userName = getCurrentUser(userId, context) as String;
+    // userName = getCurrentUser(userId, context) as String;
 
     return MaterialApp(
       home: SafeArea(
@@ -55,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: Text(
-                          userName,
+                          getCurrentUser(userId, context) as String,
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       )
@@ -304,13 +321,36 @@ class HomeScreen extends StatelessWidget {
           ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex: currentIndex,
+            currentIndex: 0,
             onTap: (index) => {
               if (index != currentIndex)
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => screens[index]))
+                if (index == 0)
+                  {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => screens[index])),
+                  },
+              if (index == 1)
+                {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const Sensitization())),
+                },
+              if (index == 2)
+                {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const MyForm())),
+                },
+              if (index == 3)
+                {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ChatBotScreen())),
+                },
+              if (index == 4)
+                {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const sosbutton_screen())),
+                },
             },
-            items: [
+            items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: "Home",
@@ -338,19 +378,5 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<String> getCurrentUser(int userId, BuildContext context) async {
-    final response = await http.get(
-      Uri.parse('http://10.0.2.2:8081/user/$userId'),
-    );
-
-    if (response.statusCode == 200) {
-      final user = json.decode(response.body);
-      userName = user['firstName'] + ' ' + user['lastName'];
-      return userName;
-    } else {
-      throw Exception("User retrieval failed");
-    }
   }
 }
