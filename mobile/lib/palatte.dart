@@ -21,7 +21,7 @@ const TextStyle redButton = TextStyle(
 );
 
 const TextStyle safeAndSec = TextStyle(
-  fontSize: 35,
+  fontSize: 25,
   fontWeight: FontWeight.bold,
   color: Color.fromRGBO(146, 61, 65, 1),
 );

@@ -24,151 +24,172 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        BackgroundImage(),
-        // AshesiLogo(),
-        Scaffold(
-          backgroundColor: Colors.transparent,
-          body: SingleChildScrollView(
-            // allows for scrolling when text box is up
-            child: SafeArea(
-              child: Column(
-                children: [
-                  SizedBox(
-                      height: 100), // space between Safe Haven and notif bar
-                  Container(
-                    height: 253, // space between Safe Haven label and Email
-                    // maximum width
-                    // child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
+    return SafeArea(
+      child: Stack(
+        children: [
+          BackgroundImage(),
+          //AshesiLogo(),
+          Scaffold(
+            backgroundColor: Colors.transparent,
+            body: SingleChildScrollView(
+              // allows for scrolling when text box is up
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Container(
+                      width: double.infinity,
+                      alignment: Alignment.topCenter,
+                      child: Image(
+                        image: AssetImage('assets/images/ashesilogo.png'),
+                        height: 80,
+                      ),
+                    ),
+                    SizedBox(
+                        height: 10), // space between Safe Haven and notif bar
+                    Container(
+                      height: 140, // space between Safe Haven label and Email
+                      // maximum width
+                      // child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        child: Column(
+                          children: [
+                            Align(
+                              alignment: Alignment(-1.20, 1),
+                              child: Text(
+                                'Safe Haven',
+                                style: safeHavenHeading,
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment(-25, 1),
+                              child: Text(
+                                'Promoting a safe and secure campus',
+                                style: safeAndSec,
+                              ),
+                            ),
+                            SizedBox(height: 9),
+                            Align(
+                              alignment: Alignment(-20, 1),
+                              child: Text(
+                                'Safe Haven provides students with resources to securely report instances of sexual violence.',
+                                style: caption,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // ),
+                    ),
+                    //SizedBox(height: 0), // spacing between caption and email
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: Column(
                         children: [
-                          Align(
-                            alignment: Alignment(-1.20, 1),
-                            child: Text(
-                              'Safe Haven',
-                              style: safeHavenHeading,
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              errorMessage,
+                              TextInput(
+                                icon: FontAwesomeIcons.envelope,
+                                hint: 'Ashesi Email',
+                                inputType: TextInputType.emailAddress,
+                                inputAction: TextInputAction.next,
+                                controller: emailController,
+                              ),
+                              PasswordInput(
+                                //optimized password
+                                icon: FontAwesomeIcons.lock,
+                                hint: 'Enter Password',
+                                inputAction: TextInputAction.done,
+                                controller: passwordController,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: GestureDetector(
+                                  onTap: () => Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ForgotPassword())),
+                                  child: Text(
+                                    'Forgot Password?',
+                                    style: inputText,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          Align(
-                            alignment: Alignment(-25, 1),
-                            child: Text(
-                              'Promoting a safe and secure campus',
-                              style: safeAndSec,
-                            ),
-                          ),
-                          SizedBox(height: 9),
-                          Align(
-                            alignment: Alignment(-20, 1),
-                            child: Text(
-                              'Safe Haven provides students with resources to securely report instances of sexual violence. The service also provides victims with access to school provided counselors and trained professionals',
-                              style: caption,
-                            ),
+                          Column(
+                            children: [
+                              SizedBox(
+                                  height:
+                                      (10)), // spacing between forgot password & login button
+                              // RoundedButton(
+                              //     buttonText:
+                              //         'Login'), //sets newly created button widget's value
+                              Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      color: Color.fromRGBO(146, 61, 65, 1),
+                                      borderRadius: BorderRadius.circular(16)),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      // If email and password have been validated, run the login function
+                                      emailController.value.text.isNotEmpty &&
+                                              passwordController
+                                                  .value.text.isNotEmpty
+                                          ? loginUser(emailController.text,
+                                              passwordController.text, context)
+                                          : null;
+                                    }, // sets navigation for when login button is hit
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical:
+                                              20.0), //height of box/placement
+                                      child: Text(
+                                        'Login',
+                                        style: redButton,
+                                      ),
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 10, // space between login and register
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                  bottom:
+                                      BorderSide(color: Colors.white, width: 1),
+                                )),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RegistrationEmail()));
+                                  },
+                                  child: Text(
+                                    'Register New Account',
+                                    style: inputText,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 30,
+                              )
+                            ],
                           ),
                         ],
                       ),
                     ),
-                    // ),
-                  ),
-                  SizedBox(height: 10), // spacing between caption and email
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
-                    child: Column(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            errorMessage,
-                            TextInput(
-                              icon: FontAwesomeIcons.envelope,
-                              hint: 'Ashesi Email',
-                              inputType: TextInputType.emailAddress,
-                              inputAction: TextInputAction.next,
-                              controller: emailController,
-                            ),
-                            PasswordInput(
-                              //optimized password
-                              icon: FontAwesomeIcons.lock,
-                              hint: 'Enter Password',
-                              inputAction: TextInputAction.done,
-                              controller: passwordController,
-                            ),
-                            GestureDetector(
-                              onTap: () => Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (context) => ForgotPassword())),
-                              child: Text(
-                                'Forgot Password?',
-                                style: inputText,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            SizedBox(
-                                height:
-                                    (10)), // spacing between forgot password & login button
-                            // RoundedButton(
-                            //     buttonText:
-                            //         'Login'), //sets newly created button widget's value
-                            Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    color: Color.fromRGBO(146, 61, 65, 1),
-                                    borderRadius: BorderRadius.circular(16)),
-                                child: TextButton(
-                                  onPressed: () {
-                                    loginUser(emailController.text,
-                                        passwordController.text, context);
-                                  }, // sets navigation for when login button is hit
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical:
-                                            20.0), //height of box/placement
-                                    child: Text(
-                                      'Login',
-                                      style: redButton,
-                                    ),
-                                  ),
-                                )),
-                            SizedBox(
-                              height: 10, // space between login and register
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                bottom:
-                                    BorderSide(color: Colors.white, width: 1),
-                              )),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          RegistrationEmail()));
-                                },
-                                child: Text(
-                                  'Register New Account',
-                                  style: inputText,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
