@@ -5,8 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/report_incident.dart';
-import 'package:slide_to_act/slide_to_act.dart';
-
+//import 'package:slide_to_act/slide_to_act.dart';
 
 // ignore: camel_case_types
 class sosbutton_screen extends StatefulWidget {
@@ -179,7 +178,7 @@ class _sosbuttonState extends State<sosbutton_screen> {
               ),
             ),
             Container(child: Text("Help is on the way!")),
-            Container(
+            /* Container(
               height: 85,
               child: ListView(
                 children: <Widget>[
@@ -209,17 +208,17 @@ class _sosbuttonState extends State<sosbutton_screen> {
                   ),
                 ],
               ),
-            ),
+            ),*/
           ]),
-           bottomNavigationBar: BottomNavigationBar(
+          bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: currentIndex,
             onTap: (index) => {
               if (index != currentIndex)
                 if (index == 0)
                   {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const HomeScreen())),
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //builder: (context) => const HomeScreen())),
                   },
               if (index == 1)
                 {
@@ -231,16 +230,16 @@ class _sosbuttonState extends State<sosbutton_screen> {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => const MyForm())),
                 },
-                
-              if (index == 3){
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const ChatBotScreen())),
+              if (index == 3)
+                {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ChatBotScreen())),
                 },
-
-              if(index==4){
-                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const sosbutton_screen())),
-              },
+              if (index == 4)
+                {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const sosbutton_screen())),
+                },
             },
             items: const [
               BottomNavigationBarItem(

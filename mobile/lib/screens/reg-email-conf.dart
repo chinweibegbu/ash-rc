@@ -65,87 +65,89 @@ class _RegistrationEmailState extends State<RegistrationEmail> {
                 Navigator.pop(context);
               },
             )),
-        body: Column(
-          children: [
-            SizedBox(height: 50),
-            Align(
-              alignment: Alignment(-.25, 0),
-              child: Text(
-                'Email Confirmation',
-                style: redBold,
-              ),
-            ),
-            SizedBox(height: 9),
-            Align(
-              alignment: Alignment(-15, 1),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 50),
+              Align(
+                alignment: Alignment(-.25, 0),
                 child: Text(
-                  'Enter your Ashesi email and we will send you code to begin the registratiion process',
-                  style: caption,
+                  'Email Confirmation',
+                  style: redBold,
                 ),
               ),
-            ),
-            SizedBox(height: 15),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40.0),
-              child: TextInput(
-                icon: FontAwesomeIcons.envelope,
-                hint: "Enter Your Email",
-                inputType: TextInputType.emailAddress,
-                inputAction: TextInputAction.next,
-                controller: emailController,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 40.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GestureDetector(
-                    onTap: () => sendOTP(),
-                    child: Text(
-                      'Send OTP',
-                      style: TextStyle(decoration: TextDecoration.underline),
-                    ),
+              SizedBox(height: 9),
+              Align(
+                alignment: Alignment(-15, 1),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  child: Text(
+                    'Enter your Ashesi email and we will send you code to begin the registratiion process',
+                    style: caption,
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40.0),
-              child: TextInput(
-                icon: FontAwesomeIcons.code,
-                hint: "Enter OTP",
-                inputType: TextInputType.emailAddress,
-                inputAction: TextInputAction.next,
-                controller: otpController,
-              ),
-            ),
-            SizedBox(height: 15),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Color.fromRGBO(146, 61, 65, 1),
-                        borderRadius: BorderRadius.circular(16)),
-                    child: TextButton(
-                      onPressed: () {
-                        verify();
-                      }, // sets navigation for when login button is hit
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 20.0), //height of box/placement
-                        child: Text(
-                          'Confirm Ashesi email',
-                          style: redButton,
-                        ),
-                      ),
-                    ))
-                // RoundedButton(buttonText: 'Send Confirmation Code'),
                 ),
-          ],
+              ),
+              SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                child: TextInput(
+                  icon: FontAwesomeIcons.envelope,
+                  hint: "Enter Your Email",
+                  inputType: TextInputType.emailAddress,
+                  inputAction: TextInputAction.next,
+                  controller: emailController,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 40.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () => sendOTP(),
+                      child: Text(
+                        'Send OTP',
+                        style: TextStyle(decoration: TextDecoration.underline),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                child: TextInput(
+                  icon: FontAwesomeIcons.code,
+                  hint: "Enter OTP",
+                  inputType: TextInputType.emailAddress,
+                  inputAction: TextInputAction.next,
+                  controller: otpController,
+                ),
+              ),
+              SizedBox(height: 15),
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Color.fromRGBO(146, 61, 65, 1),
+                          borderRadius: BorderRadius.circular(16)),
+                      child: TextButton(
+                        onPressed: () {
+                          verify();
+                        }, // sets navigation for when login button is hit
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 20.0), //height of box/placement
+                          child: Text(
+                            'Confirm Ashesi email',
+                            style: redButton,
+                          ),
+                        ),
+                      ))
+                  // RoundedButton(buttonText: 'Send Confirmation Code'),
+                  ),
+            ],
+          ),
         ));
   }
 

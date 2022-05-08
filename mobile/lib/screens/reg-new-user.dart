@@ -10,6 +10,7 @@ import 'package:mobile/widgets/ashesilogo.dart';
 import 'package:mobile/widgets/text-input-inverse.dart';
 import '../palatte.dart';
 import '../widgets/password-input.dart';
+import '../widgets/re-password-input.dart';
 import '../widgets/widgets.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,6 +24,7 @@ class UserRegistration extends StatelessWidget {
   TextEditingController genderController = TextEditingController();
   TextEditingController graduationYearController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController repeatPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -102,22 +104,23 @@ class UserRegistration extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: TextInput(
+              child: PasswordInput(
                 icon: FontAwesomeIcons.lockOpen,
                 hint: "New Password",
-                inputType: TextInputType.visiblePassword,
+                // inputType: TextInputType.visiblePassword,
                 inputAction: TextInputAction.next,
                 controller: passwordController,
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: TextInput(
+              child: RepeatPasswordInput(
                   icon: FontAwesomeIcons.lock,
                   hint: "Repeat Password",
-                  inputType: TextInputType.visiblePassword,
+                  //inputType: TextInputType.visiblePassword,
                   inputAction: TextInputAction.next,
-                  controller: TextEditingController()),
+                  controller: repeatPasswordController,
+                  refController: passwordController),
             ),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),

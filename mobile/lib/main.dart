@@ -12,6 +12,7 @@ import 'package:mobile/screens/report_incident.dart';
 import 'package:mobile/screens/reset-passw.dart';
 import 'package:mobile/screens/sensitization.dart';
 import 'package:mobile/screens/home_screen.dart';
+import 'package:mobile/screens/sosbutton_screen.dart';
 import './screens/loginpage.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ASH-RC',
       // ignore: prefer_const_constructors
-      home: LoginPage(),
+      home: ForgotConfCode(),
     );
   }
 }

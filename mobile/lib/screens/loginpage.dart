@@ -48,11 +48,11 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                         height: 10), // space between Safe Haven and notif bar
                     Container(
-                      height: 140, // space between Safe Haven label and Email
+                      height: 156, // space between Safe Haven label and Email
                       // maximum width
                       // child: Center(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        padding: const EdgeInsets.only(left: 50, right: 50),
                         child: Column(
                           children: [
                             Align(

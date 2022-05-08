@@ -27,50 +27,52 @@ class GoHome extends StatelessWidget {
           //   },
           // )
         ),
-        body: Column(
-          children: [
-            SizedBox(height: 50),
-            Align(
-              alignment: Alignment(-.75, 0),
-              child: Text(
-                'Success',
-                style: redBold,
-              ),
-            ),
-            SizedBox(height: 9),
-            Align(
-              alignment: Alignment(-15, 1),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 50),
+              Align(
+                alignment: Alignment(-.75, 0),
                 child: Text(
-                  'Your password has been successfully reset, please return home to log in',
-                  style: caption,
+                  'Success',
+                  style: redBold,
                 ),
               ),
-            ),
-            SizedBox(height: 39),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Color.fromRGBO(146, 61, 65, 1),
-                        borderRadius: BorderRadius.circular(16)),
-                    child: TextButton(
-                      onPressed:
-                          () {}, // sets navigation for when login button is hit
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 20.0), //height of box/placement
-                        child: Text(
-                          'Back to Login',
-                          style: redButton,
-                        ),
-                      ),
-                    ))
-                // RoundedButton(buttonText: 'Back to Login'),
+              SizedBox(height: 9),
+              Align(
+                alignment: Alignment(-15, 1),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  child: Text(
+                    'Your password has been successfully reset, please return home to log in',
+                    style: caption,
+                  ),
                 ),
-          ],
+              ),
+              SizedBox(height: 39),
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Color.fromRGBO(146, 61, 65, 1),
+                          borderRadius: BorderRadius.circular(16)),
+                      child: TextButton(
+                        onPressed:
+                            () {}, // sets navigation for when login button is hit
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 20.0), //height of box/placement
+                          child: Text(
+                            'Back to Login',
+                            style: redButton,
+                          ),
+                        ),
+                      ))
+                  // RoundedButton(buttonText: 'Back to Login'),
+                  ),
+            ],
+          ),
         ));
   }
 }

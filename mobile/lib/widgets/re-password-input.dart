@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
 import '../palatte.dart';
 
-class PasswordInput extends StatelessWidget {
+class RepeatPasswordInput extends StatelessWidget {
   //specifies details of password
-  const PasswordInput({
+  const RepeatPasswordInput({
     Key? key,
     required this.icon,
     required this.hint,
     required this.inputAction,
     required this.controller,
+    required this.refController,
   }) : super(key: key);
 
   final IconData icon;
   final String hint;
   final TextInputAction inputAction;
   final TextEditingController controller;
+  final TextEditingController refController;
 
   String? get _errorMessage {
     // at any time, we can get the text from _controller.value.text
     final text = controller.value.text;
+    final refText = refController.value.text;
     // Note: you can do your own custom validation here
     // Move this logic this outside the widget for more testable code
     if (text.isEmpty) {
@@ -26,6 +29,9 @@ class PasswordInput extends StatelessWidget {
     }
     if (text.length < 8) {
       return 'Too short';
+    }
+    if (text != refText) {
+      return 'Passwords don\'t match';
     }
     // return null if the text is valid
     return null;

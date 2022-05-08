@@ -1,10 +1,8 @@
-//import 'dart:html';
-
 import 'package:flutter/material.dart';
 import '../palatte.dart';
 
-class TextInput extends StatelessWidget {
-  const TextInput({
+class OTPInput extends StatelessWidget {
+  const OTPInput({
     Key? key,
     required this.icon,
     required this.hint,
@@ -25,10 +23,10 @@ class TextInput extends StatelessWidget {
     // Note: you can do your own custom validation here
     // Move this logic this outside the widget for more testable code
     if (text.isEmpty) {
-      return 'Field can\'t be empty';
+      return 'Enter your OTP';
     }
-    if (text.length < 2) {
-      return 'Too short';
+    if (text.length != 6) {
+      return 'The Entered OTP is invalid';
     }
     // return null if the text is valid
     return null;

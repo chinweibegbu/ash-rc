@@ -28,7 +28,8 @@ class RegComplete extends StatelessWidget {
           //   },
           // )
         ),
-        body: Column(
+        body: SingleChildScrollView(
+            child: Column(
           children: [
             SizedBox(height: 50),
             Align(
@@ -73,6 +74,6 @@ class RegComplete extends StatelessWidget {
                 // RoundedButton(buttonText: 'Back to Login'),
                 ),
           ],
-        ));
+        )));
   }
 }

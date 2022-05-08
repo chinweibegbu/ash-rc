@@ -181,7 +181,7 @@ class _Sensitization extends State<Sensitization> {
                       'Clear: Verbally given permission to whats about to happen',
                       style: TextStyle(
                         fontSize: 15.0,
-                        color: Color.fromRGBO(146, 61, 65, 1),
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -191,7 +191,7 @@ class _Sensitization extends State<Sensitization> {
                       'Coherent: Neither party is incapacitated and is able to make informed decisions free from pressure or coersion ',
                       style: TextStyle(
                         fontSize: 15.0,
-                        color: Color.fromRGBO(146, 61, 65, 1),
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -201,128 +201,157 @@ class _Sensitization extends State<Sensitization> {
                       'Reversible: The ability to change your mind anytime during the encounter',
                       style: TextStyle(
                         fontSize: 15.0,
-                        color: Color.fromRGBO(146, 61, 65, 1),
+                        color: Colors.black,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(),
-                                borderRadius: BorderRadius.circular(5.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(children: [
-                                Icon(Icons.file_present, size: 30.0),
-                                Flexible(
-                                  child: Text(
-                                      'Ashesi University sexual harassment and misconduct policies'),
-                                ),
-                              ]),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(),
-                              borderRadius: BorderRadius.circular(5.0)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(children: [
-                              Icon(Icons.cloud_download, size: 30.0),
-                              Flexible(
-                                child: Text(
-                                    'Annual sexual misconduct surveys (2015 to 2021)'),
-                              ),
-                            ]),
-                          ),
-                        ),
-                      ],
-                    ),
+                    padding: const EdgeInsets.only(top: 6.0),
+                    child: Text('CONSENT IS NOT:',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600,
+                          color: Color.fromRGBO(146, 61, 65, 1),
+                        )),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15.0),
+                    padding: const EdgeInsets.only(bottom: 3.0),
                     child: Text(
-                      'Respondents',
+                      'Assumed: Cannot be implied from silence, passivity, or lack of physical resistance',
                       style: TextStyle(
-                          fontSize: 35.0, fontWeight: FontWeight.w600),
+                        fontSize: 15.0,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 15.0, bottom: 10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                CircleAvatar(
-                                  backgroundImage: AssetImage(
-                                      'assets/images/diane-davis.jpg'),
-                                  radius: 50.0,
-                                ),
-                                Text(
-                                  'Diane Davis',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                Text('Head, CCAPs')
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                CircleAvatar(
-                                  backgroundImage: AssetImage(
-                                      'assets/images/millicent-adjei.jpg'),
-                                  radius: 50.0,
-                                ),
-                                Text('Dr Millicent Adjei',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                                Text('Head, ODIP')
-                              ],
-                            )
-                          ],
-                        ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 3.0),
+                    child: Text(
+                      'Automatic: The existence of a current or previous dating, marital or sexual relationship does not constitute consent ',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.black,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            children: [
-                              CircleAvatar(
-                                backgroundImage: AssetImage(
-                                    'assets/images/salim-wangabi.jpg'),
-                                radius: 50.0,
-                              ),
-                              Text('Salim Wangabi',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              Text('Consellor, CCAPs')
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              CircleAvatar(
-                                backgroundImage:
-                                    AssetImage('assets/images/nurse.jpeg'),
-                                radius: 50.0,
-                              ),
-                              Text('Bridgette Asiedu',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              Text('Nurse, Health Center')
-                            ],
-                          )
-                        ],
-                      ),
-                    ],
-                  )
+                    ),
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                  //   child: Column(
+                  //     children: [
+                  //       Padding(
+                  //         padding: const EdgeInsets.only(bottom: 8.0),
+                  //         child: Container(
+                  //           decoration: BoxDecoration(
+                  //               border: Border.all(),
+                  //               borderRadius: BorderRadius.circular(5.0)),
+                  //           child: Padding(
+                  //             padding: const EdgeInsets.all(8.0),
+                  //             child: Row(children: [
+                  //               Icon(Icons.file_present, size: 30.0),
+                  //               Flexible(
+                  //                 child: Text(
+                  //                     'Ashesi University sexual harassment and misconduct policies'),
+                  //               ),
+                  //             ]),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Container(
+                  //         decoration: BoxDecoration(
+                  //             border: Border.all(),
+                  //             borderRadius: BorderRadius.circular(5.0)),
+                  //         child: Padding(
+                  //           padding: const EdgeInsets.all(8.0),
+                  //           child: Row(children: [
+                  //             Icon(Icons.cloud_download, size: 30.0),
+                  //             Flexible(
+                  //               child: Text(
+                  //                   'Annual sexual misconduct surveys (2015 to 2021)'),
+                  //             ),
+                  //           ]),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 15.0),
+                  //   child: Text(
+                  //     'Respondents',
+                  //     style: TextStyle(
+                  //         fontSize: 35.0, fontWeight: FontWeight.w600),
+                  //   ),
+                  // ),
+                  // Column(
+                  //   children: [
+                  //     Padding(
+                  //       padding: const EdgeInsets.only(top: 15.0, bottom: 10.0),
+                  //       child: Row(
+                  //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //         children: [
+                  //           Column(
+                  //             children: [
+                  //               CircleAvatar(
+                  //                 backgroundImage: AssetImage(
+                  //                     'assets/images/diane-davis.jpg'),
+                  //                 radius: 50.0,
+                  //               ),
+                  //               Text(
+                  //                 'Diane Davis',
+                  //                 style: TextStyle(fontWeight: FontWeight.bold),
+                  //               ),
+                  //               Text('Head, CCAPs')
+                  //             ],
+                  //           ),
+                  //           Column(
+                  //             children: [
+                  //               CircleAvatar(
+                  //                 backgroundImage: AssetImage(
+                  //                     'assets/images/millicent-adjei.jpg'),
+                  //                 radius: 50.0,
+                  //               ),
+                  //               Text('Dr Millicent Adjei',
+                  //                   style:
+                  //                       TextStyle(fontWeight: FontWeight.bold)),
+                  //               Text('Head, ODIP')
+                  //             ],
+                  //           )
+                  //         ],
+                  //       ),
+                  //     ),
+                  //     Row(
+                  //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //       children: [
+                  //         Column(
+                  //           children: [
+                  //             CircleAvatar(
+                  //               backgroundImage: AssetImage(
+                  //                   'assets/images/salim-wangabi.jpg'),
+                  //               radius: 50.0,
+                  //             ),
+                  //             Text('Salim Wangabi',
+                  //                 style:
+                  //                     TextStyle(fontWeight: FontWeight.bold)),
+                  //             Text('Consellor, CCAPs')
+                  //           ],
+                  //         ),
+                  //         Column(
+                  //           children: [
+                  //             CircleAvatar(
+                  //               backgroundImage:
+                  //                   AssetImage('assets/images/nurse.jpeg'),
+                  //               radius: 50.0,
+                  //             ),
+                  //             Text('Bridgette Asiedu',
+                  //                 style:
+                  //                     TextStyle(fontWeight: FontWeight.bold)),
+                  //             Text('Nurse, Health Center')
+                  //           ],
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ],
+                  // )
                 ],
               ),
             ),
