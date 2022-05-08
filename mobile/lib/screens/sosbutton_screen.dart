@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/report_incident.dart';
+import 'package:mobile/screens/sensitization.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 
 
@@ -213,18 +214,18 @@ class _sosbuttonState extends State<sosbutton_screen> {
           ]),
            bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex: currentIndex,
+            currentIndex: 4,
             onTap: (index) => {
               if (index != currentIndex)
                 if (index == 0)
                   {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const HomeScreen())),
+                        builder: (context) => screens[index])),
                   },
               if (index == 1)
                 {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => screens[index])),
+                      MaterialPageRoute(builder: (context) =>const Sensitization())),
                 },
               if (index == 2)
                 {

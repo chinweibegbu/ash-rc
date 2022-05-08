@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/report_incident.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:mobile/screens/sensitization.dart';
+import 'package:mobile/screens/sosbutton_screen.dart';
 
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({Key? key}) : super(key: key);
@@ -17,6 +20,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   @override
   Widget build(BuildContext context) {
     var child;
+    var screens;
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -242,11 +246,38 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
             ),
             
           ]),*/
-          bottomNavigationBar: BottomNavigationBar(
+bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex: currentIndex,
-            onTap: (index) => setState(() => currentIndex = index),
-            items: [
+            currentIndex: 3,
+            onTap: (index) => {
+              if (index != currentIndex)
+                if (index == 0)
+                  {
+                    Navigator.of(context).push(MaterialPageRoute(
+                       builder: (context) => screens[index])),
+                  },
+              if (index == 1)
+                {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Sensitization())),
+                },
+              if (index == 2)
+                {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const MyForm())),
+                },
+                
+              if (index == 3){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const ChatBotScreen())),
+                },
+
+              if(index==4){
+                   Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const sosbutton_screen())),
+              },
+            },
+            items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: "Home",
@@ -276,6 +307,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     );
   }
 }
+
 
 class ChatMessage {
   String messageContent;
