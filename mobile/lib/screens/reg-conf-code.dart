@@ -8,8 +8,17 @@ import '../palatte.dart';
 import '../widgets/password-input.dart';
 import '../widgets/widgets.dart';
 
-class RegConfCode extends StatelessWidget {
+class RegConfCode extends StatefulWidget {
+  @override
+  State<RegConfCode> createState() => _RegConfCodeState();
+}
+
+class _RegConfCodeState extends State<RegConfCode> {
   // const LoginPage({ Key? key }) : super(key: key);
+
+  void verifyOtp() async {
+    //var response = Email
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +64,7 @@ class RegConfCode extends StatelessWidget {
                 hint: "Enter Confirmation Code",
                 inputType: TextInputType.emailAddress,
                 inputAction: TextInputAction.next,
+                controller: TextEditingController(),
               ),
             ),
             SizedBox(height: 24),

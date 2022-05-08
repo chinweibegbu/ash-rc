@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mobile/screens/loginpage.dart';
 import 'package:mobile/widgets/ashesilogo.dart';
 import 'package:mobile/widgets/text-input-inverse.dart';
 import '../palatte.dart';
@@ -57,8 +58,9 @@ class RegComplete extends StatelessWidget {
                         color: Color.fromRGBO(146, 61, 65, 1),
                         borderRadius: BorderRadius.circular(16)),
                     child: TextButton(
-                      onPressed:
-                          () {}, // sets navigation for when login button is hit
+                      onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              LoginPage())), // sets navigation for when login button is hit
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 20.0), //height of box/placement
