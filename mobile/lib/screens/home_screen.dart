@@ -32,9 +32,23 @@ class HomeScreen extends StatelessWidget {
     )
   ];
 
+  Future<String> getCurrentUser(int userId, BuildContext context) async {
+    final response = await http.get(
+      Uri.parse('http://10.0.2.2:8081/user/$userId'),
+    );
+
+    if (response.statusCode == 200) {
+      final user = json.decode(response.body);
+      userName = user['firstName'] + ' ' + user['lastName'];
+      return userName;
+    } else {
+      throw Exception("User retrieval failed");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    userName = getCurrentUser(userId, context) as String;
+    // userName = getCurrentUser(userId, context) as String;
 
     return MaterialApp(
       home: SafeArea(
@@ -58,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: Text(
-                          userName,
+                          getCurrentUser(userId, context) as String,
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       )
@@ -317,24 +331,24 @@ class HomeScreen extends StatelessWidget {
                   },
               if (index == 1)
                 {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) =>const Sensitization())),
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const Sensitization())),
                 },
               if (index == 2)
                 {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => const MyForm())),
                 },
-                
-              if (index == 3){
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const ChatBotScreen())),
+              if (index == 3)
+                {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ChatBotScreen())),
                 },
-
-              if(index==4){
-                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const sosbutton_screen())),
-              },
+              if (index == 4)
+                {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const sosbutton_screen())),
+                },
             },
             items: const [
               BottomNavigationBarItem(
@@ -364,19 +378,5 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<String> getCurrentUser(int userId, BuildContext context) async {
-    final response = await http.get(
-      Uri.parse('http://10.0.2.2:8081/user/$userId'),
-    );
-
-    if (response.statusCode == 200) {
-      final user = json.decode(response.body);
-      userName = user['firstName'] + ' ' + user['lastName'];
-      return userName;
-    } else {
-      throw Exception("User retrieval failed");
-    }
   }
 }

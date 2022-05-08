@@ -8,7 +8,6 @@ import 'package:mobile/screens/report_incident.dart';
 import 'package:mobile/screens/sensitization.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 
-
 // ignore: camel_case_types
 class sosbutton_screen extends StatefulWidget {
   const sosbutton_screen({Key? key}) : super(key: key);
@@ -155,16 +154,22 @@ class _sosbuttonState extends State<sosbutton_screen> {
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                 ),
-                onPressed: () => {showDialog(context: context, 
-                    builder:(BuildContext context)=>_buildPopupDialog(context),
+                onPressed: () => {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildPopupDialog(context),
                     //barrierDismissible: true,
                     //barrierColor: Colors.red,
                     useSafeArea: true,
-                    useRootNavigator: true,),},
+                    useRootNavigator: true,
+                  ),
+                },
                 onLongPress: () => {
                   showDialog(
-                    context: context, 
-                    builder:(BuildContext context)=>_buildPopupDialog(context),
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildPopupDialog(context),
                     //barrierDismissible: true,
                     //barrierColor: Colors.white,
                     useSafeArea: true,
@@ -201,7 +206,8 @@ class _sosbuttonState extends State<sosbutton_screen> {
                   Builder(
                     builder: (context) {
                       return Padding(
-                        padding: const EdgeInsets.only(top: 15, bottom: 5, left:8,right: 8),
+                        padding: const EdgeInsets.only(
+                            top: 15, bottom: 5, left: 8, right: 8),
                         child: SlideAction(
                           height: 60,
                           sliderButtonIcon: Icon(
@@ -226,7 +232,7 @@ class _sosbuttonState extends State<sosbutton_screen> {
               ),
             ),
           ]),
-           bottomNavigationBar: BottomNavigationBar(
+          bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: 4,
             onTap: (index) => {
@@ -238,24 +244,24 @@ class _sosbuttonState extends State<sosbutton_screen> {
                   },
               if (index == 1)
                 {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) =>const Sensitization())),
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const Sensitization())),
                 },
               if (index == 2)
                 {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => const MyForm())),
                 },
-                
-              if (index == 3){
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const ChatBotScreen())),
+              if (index == 3)
+                {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ChatBotScreen())),
                 },
-
-              if(index==4){
-                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const sosbutton_screen())),
-              },
+              if (index == 4)
+                {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const sosbutton_screen())),
+                },
             },
             items: const [
               BottomNavigationBarItem(
@@ -287,6 +293,7 @@ class _sosbuttonState extends State<sosbutton_screen> {
     );
   }
 }
+
 Widget _buildPopupDialog(BuildContext context) {
   return AlertDialog(
     title: const Text('SOS button pressed!'),
