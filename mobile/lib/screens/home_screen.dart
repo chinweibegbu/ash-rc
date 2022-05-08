@@ -3,22 +3,26 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/report_incident.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  HomeScreen({Key? key, required this.userId}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
+  final int userId;
 
   List<Widget> screens = [
-    HomeScreen(),
-    HomeScreen(),
+    HomeScreen(
+      userId: -1,
+    ),
+    HomeScreen(
+      userId: -1,
+    ),
     MyForm(),
-    HomeScreen(),
-    HomeScreen()
+    HomeScreen(
+      userId: -1,
+    ),
+    HomeScreen(
+      userId: -1,
+    )
   ];
 
   @override
