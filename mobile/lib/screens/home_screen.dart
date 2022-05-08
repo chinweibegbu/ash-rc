@@ -5,12 +5,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/report_incident.dart';
-<<<<<<< HEAD
+import 'package:http/http.dart' as http;
 import 'package:mobile/screens/sensitization.dart';
 import 'package:mobile/screens/sosbutton_screen.dart';
-=======
-import 'package:http/http.dart' as http;
->>>>>>> 7acb65c0246b398425bb7781c395e103f29da34b
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key, required this.userId}) : super(key: key);
