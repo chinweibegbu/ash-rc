@@ -36,7 +36,7 @@ class UserRegistration extends StatelessWidget {
                 color: Colors.white,
               ),
               onPressed: () {
-                // do something
+                Navigator.pop(context);
               },
             )),
         body: SingleChildScrollView(

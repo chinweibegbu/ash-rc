@@ -1,16 +1,23 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/report_incident.dart';
+<<<<<<< HEAD
 import 'package:mobile/screens/sensitization.dart';
 import 'package:mobile/screens/sosbutton_screen.dart';
+=======
+import 'package:http/http.dart' as http;
+>>>>>>> 7acb65c0246b398425bb7781c395e103f29da34b
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key, required this.userId}) : super(key: key);
 
-  int currentIndex = 0;
   final int userId;
+  int currentIndex = 0;
+  String userName = "John Doe";
 
   List<Widget> screens = [
     HomeScreen(
@@ -30,6 +37,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    userName = getCurrentUser(userId, context) as String;
+
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -52,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: Text(
-                          'Miriam Duke',
+                          userName,
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       )
@@ -358,5 +367,19 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<String> getCurrentUser(int userId, BuildContext context) async {
+    final response = await http.get(
+      Uri.parse('http://10.0.2.2:8081/user/$userId'),
+    );
+
+    if (response.statusCode == 200) {
+      final user = json.decode(response.body);
+      userName = user['firstName'] + ' ' + user['lastName'];
+      return userName;
+    } else {
+      throw Exception("User retrieval failed");
+    }
   }
 }

@@ -62,7 +62,7 @@ class _RegistrationEmailState extends State<RegistrationEmail> {
                 color: Colors.white,
               ),
               onPressed: () {
-                // do something
+                Navigator.pop(context);
               },
             )),
         body: Column(
