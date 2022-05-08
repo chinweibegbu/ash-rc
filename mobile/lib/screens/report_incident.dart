@@ -22,11 +22,19 @@ class _MyFormState extends State<MyForm> {
   bool isReportChecked = false;
 
   List<Widget> screens = [
-    HomeScreen(),
-    HomeScreen(),
+    HomeScreen(
+      userId: -1,
+    ),
+    HomeScreen(
+      userId: -1,
+    ),
     MyForm(),
-    HomeScreen(),
-    HomeScreen()
+    HomeScreen(
+      userId: -1,
+    ),
+    HomeScreen(
+      userId: -1,
+    )
   ];
 
   List<DropdownMenuItem<int>> communityRoleList = [
@@ -94,7 +102,9 @@ class _MyFormState extends State<MyForm> {
                                 TextStyle(fontSize: 24.0, color: Colors.white)),
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                              builder: (context) => HomeScreen(
+                                    userId: -1,
+                                  )));
                         },
                       ),
                       ListTile(

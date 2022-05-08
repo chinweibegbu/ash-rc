@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import '../palatte.dart';
 
 class TextInput extends StatelessWidget {
-  const TextInput({
-    Key? key,
-    required this.icon,
-    required this.hint,
-    required this.inputType,
-    required this.inputAction,
-  }) : super(key: key);
+  const TextInput(
+      {Key? key,
+      required this.icon,
+      required this.hint,
+      required this.inputType,
+      required this.inputAction,
+      required this.controller})
+      : super(key: key);
 
   final IconData icon;
   final String hint;
   final TextInputType inputType;
   final TextInputAction inputAction;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +29,20 @@ class TextInput extends StatelessWidget {
         ),
         child: TextField(
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(vertical: 20),
-            border: InputBorder.none,
-            hintText: hint, // default text for email input
-            prefixIcon: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Icon(icon, //specifies icon
-                  color: Color.fromRGBO(146, 61, 65, 1),
-                  size: 30),
-            ),
-            hintStyle: inputText,
-          ),
+              contentPadding: const EdgeInsets.symmetric(vertical: 20),
+              border: InputBorder.none,
+              hintText: hint, // default text for email input
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Icon(icon, //specifies icon
+                    color: Color.fromRGBO(146, 61, 65, 1),
+                    size: 30),
+              ),
+              hintStyle: inputText),
           style: inputText,
           keyboardType: inputType, //email vs password
           textInputAction: inputAction, // action button
+          controller: controller,
         ),
       ),
     );

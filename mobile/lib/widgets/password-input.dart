@@ -3,16 +3,18 @@ import '../palatte.dart';
 
 class PasswordInput extends StatelessWidget {
   //specifies details of password
-  const PasswordInput({
-    Key? key,
-    required this.icon,
-    required this.hint,
-    required this.inputAction,
-  }) : super(key: key);
+  const PasswordInput(
+      {Key? key,
+      required this.icon,
+      required this.hint,
+      required this.inputAction,
+      required this.controller})
+      : super(key: key);
 
   final IconData icon;
   final String hint;
   final TextInputAction inputAction;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +27,22 @@ class PasswordInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: TextField(
-          decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(vertical: 20),
-            border: InputBorder.none,
-            hintText: hint, // default text for email input
-            prefixIcon: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Icon(icon, //specifies icon
-                  color: Color.fromRGBO(146, 61, 65, 1),
-                  size: 30),
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.symmetric(vertical: 20),
+              border: InputBorder.none,
+              hintText: hint, // default text for email input
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Icon(icon, //specifies icon
+                    color: Color.fromRGBO(146, 61, 65, 1),
+                    size: 30),
+              ),
+              hintStyle: inputText,
             ),
-            hintStyle: inputText,
-          ),
-          obscureText: true, //hides input text
-          style: inputText,
-          textInputAction: inputAction, // action button
-        ),
+            obscureText: true, //hides input text
+            style: inputText,
+            textInputAction: inputAction, // action button
+            controller: controller),
       ),
     );
   }

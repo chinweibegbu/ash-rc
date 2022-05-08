@@ -19,11 +19,19 @@ class _MyAnonFormState extends State<MyAnonForm> {
   bool isReportChecked = false;
 
   List<Widget> screens = [
-    HomeScreen(),
-    HomeScreen(),
+    HomeScreen(
+      userId: -1,
+    ),
+    HomeScreen(
+      userId: -1,
+    ),
     MyAnonForm(),
-    HomeScreen(),
-    HomeScreen()
+    HomeScreen(
+      userId: -1,
+    ),
+    HomeScreen(
+      userId: -1,
+    )
   ];
 
   List<DropdownMenuItem<int>> communityRoleList = [

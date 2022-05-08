@@ -1,7 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mobile/screens/home_screen.dart';
+import 'package:mobile/screens/reg-email-conf.dart';
+import 'package:mobile/screens/reg-new-user.dart';
 import 'package:mobile/widgets/ashesilogo.dart';
 import '../palatte.dart';
 import '../widgets/password-input.dart';
@@ -10,6 +15,11 @@ import 'package:http/http.dart' as http;
 
 class LoginPage extends StatelessWidget {
   // const LoginPage({ Key? key }) : super(key: key);
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  ErrorMessage errorMessage = ErrorMessage();
 
   @override
   Widget build(BuildContext context) {
@@ -69,17 +79,20 @@ class LoginPage extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            errorMessage,
                             TextInput(
                               icon: FontAwesomeIcons.envelope,
                               hint: 'Ashesi Email',
                               inputType: TextInputType.emailAddress,
                               inputAction: TextInputAction.next,
+                              controller: emailController,
                             ),
                             PasswordInput(
                               //optimized password
                               icon: FontAwesomeIcons.lock,
                               hint: 'Enter Password',
                               inputAction: TextInputAction.done,
+                              controller: passwordController,
                             ),
                             // Container( //duplicate Email Contianer for password
                             //   decoration: BoxDecoration(
@@ -130,8 +143,10 @@ class LoginPage extends StatelessWidget {
                                     color: Color.fromRGBO(146, 61, 65, 1),
                                     borderRadius: BorderRadius.circular(16)),
                                 child: TextButton(
-                                  onPressed:
-                                      () {}, // sets navigation for when login button is hit
+                                  onPressed: () {
+                                    loginUser(emailController.text,
+                                        passwordController.text, context);
+                                  }, // sets navigation for when login button is hit
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical:
@@ -151,9 +166,16 @@ class LoginPage extends StatelessWidget {
                                 bottom:
                                     BorderSide(color: Colors.white, width: 1),
                               )),
-                              child: Text(
-                                'Register New Account',
-                                style: inputText,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          RegistrationEmail()));
+                                },
+                                child: Text(
+                                  'Register New Account',
+                                  style: inputText,
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -171,5 +193,27 @@ class LoginPage extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Future<void> loginUser(
+      String email, String password, BuildContext context) async {
+    print(email);
+    final response = await http.post(
+      Uri.parse('http://10.0.2.2:8081/user/login'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{'email': email, 'password': password}),
+    );
+
+    if (response.statusCode == 200) {
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => HomeScreen(
+                userId: int.parse(response.body),
+              )));
+    } else {
+      // throw Exception('Unsuccessful login');
+      errorMessage.color = Color.fromRGBO(255, 0, 0, 1);
+    }
   }
 }

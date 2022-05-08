@@ -55,6 +55,7 @@ class PasswordReset extends StatelessWidget {
                 hint: "Enter New Password",
                 inputType: TextInputType.visiblePassword,
                 inputAction: TextInputAction.next,
+                controller: TextEditingController(),
               ),
             ),
             Padding(
@@ -64,6 +65,7 @@ class PasswordReset extends StatelessWidget {
                 hint: "Re-Enter New Password",
                 inputType: TextInputType.visiblePassword,
                 inputAction: TextInputAction.next,
+                controller: TextEditingController(),
               ),
             ),
             SizedBox(height: 24),

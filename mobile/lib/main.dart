@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ASH-RC',
       // ignore: prefer_const_constructors
-      home: HomeScreen(),
+      home: LoginPage(),
     );
   }
 }
