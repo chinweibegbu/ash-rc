@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -155,8 +155,22 @@ class _sosbuttonState extends State<sosbutton_screen> {
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                 ),
-                onPressed: () => {},
-                onLongPress: () => {},
+                onPressed: () => {showDialog(context: context, 
+                    builder:(BuildContext context)=>_buildPopupDialog(context),
+                    //barrierDismissible: true,
+                    //barrierColor: Colors.red,
+                    useSafeArea: true,
+                    useRootNavigator: true,),},
+                onLongPress: () => {
+                  showDialog(
+                    context: context, 
+                    builder:(BuildContext context)=>_buildPopupDialog(context),
+                    //barrierDismissible: true,
+                    //barrierColor: Colors.white,
+                    useSafeArea: true,
+                    useRootNavigator: true,
+                  ),
+                },
                 style: ButtonStyle(
                   fixedSize: MaterialStateProperty.all(Size.fromRadius(150)),
                   backgroundColor: MaterialStateProperty.all(
@@ -272,4 +286,25 @@ class _sosbuttonState extends State<sosbutton_screen> {
       ),
     );
   }
+}
+Widget _buildPopupDialog(BuildContext context) {
+  return AlertDialog(
+    title: const Text('SOS button pressed!'),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text("Help is on the way!"),
+      ],
+    ),
+    actions: <Widget>[
+      FlatButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: const Text('Close'),
+      ),
+    ],
+  );
 }

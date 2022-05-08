@@ -17,7 +17,7 @@ class _Sensitization extends State<Sensitization> {
 
   @override
   Widget build(BuildContext context) {
-    var screens;
+    //var screens;
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -333,12 +333,19 @@ class _Sensitization extends State<Sensitization> {
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: 1,
+            
             onTap: (index) => {
+              setState((){
+
+              },
+              ),
+              
               if (index != currentIndex)
                 if (index == 0)
                   {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => screens[index])),
+                   // Navigator.of(context).push(
+                      //MaterialPageRoute(
+                        //builder: (context) => screens[index])),
                   },
               if (index == 1)
                 {
@@ -380,11 +387,13 @@ class _Sensitization extends State<Sensitization> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.gps_fixed),
+                activeIcon: Icon(Icons.gps_fixed),
                 label: "Emergency",
               )
             ],
             backgroundColor: Colors.white,
             selectedItemColor: Color.fromRGBO(146, 61, 65, 1),
+            
           ),
         ),
       ),
