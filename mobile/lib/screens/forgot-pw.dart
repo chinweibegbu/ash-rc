@@ -55,6 +55,7 @@ class ForgotPassword extends StatelessWidget {
                 hint: "Enter Your Email",
                 inputType: TextInputType.emailAddress,
                 inputAction: TextInputAction.next,
+                controller: TextEditingController(),
               ),
             ),
             SizedBox(height: 24),

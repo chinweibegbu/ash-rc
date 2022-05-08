@@ -10,6 +10,7 @@ import '../widgets/widgets.dart';
 
 class ForgotConfCode extends StatelessWidget {
   // const LoginPage({ Key? key }) : super(key: key);
+  final myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +52,11 @@ class ForgotConfCode extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40.0),
               child: TextInput(
-                icon: FontAwesomeIcons.code,
-                hint: "Confirmation Code",
-                inputType: TextInputType.emailAddress,
-                inputAction: TextInputAction.next,
-              ),
+                  icon: FontAwesomeIcons.code,
+                  hint: "Confirmation Code",
+                  inputType: TextInputType.emailAddress,
+                  inputAction: TextInputAction.next,
+                  controller: myController),
             ),
             SizedBox(height: 24),
             Padding(
