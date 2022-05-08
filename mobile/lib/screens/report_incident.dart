@@ -26,18 +26,12 @@ class _MyFormState extends State<MyForm> {
 
   List<Widget> screens = [
     HomeScreen(
-      userId: -1,
-    ),
-    HomeScreen(
-      userId: -1,
-    ),
+        //userId: -1,
+        ),
+    Sensitization(),
     MyForm(),
-    HomeScreen(
-      userId: -1,
-    ),
-    HomeScreen(
-      userId: -1,
-    )
+    ChatBotScreen(),
+    sosbutton_screen()
   ];
 
   List<DropdownMenuItem<int>> communityRoleList = [
@@ -106,7 +100,7 @@ class _MyFormState extends State<MyForm> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => HomeScreen(
-                                    userId: -1,
+                                  //userId: -1,
                                   )));
                         },
                       ),
@@ -152,7 +146,10 @@ class _MyFormState extends State<MyForm> {
                         title: const Text('Info',
                             style:
                                 TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Sensitization()));
+                        },
                       ),
                       ListTile(
                         leading: const Icon(
@@ -341,36 +338,13 @@ class _MyFormState extends State<MyForm> {
               ),
             ),
           ),
-         bottomNavigationBar: BottomNavigationBar(
+          bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex: 2,
+            currentIndex: currentIndex,
             onTap: (index) => {
               if (index != currentIndex)
-                if (index == 0)
-                  {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => screens[index])),
-                  },
-              if (index == 1)
-                {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) =>const Sensitization())),
-                },
-              if (index == 2)
-                {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const MyForm())),
-                },
-                
-              if (index == 3){
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const ChatBotScreen())),
-                },
-
-              if(index==4){
-                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const sosbutton_screen())),
-              },
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => screens[index]))
             },
             items: const [
               BottomNavigationBarItem(

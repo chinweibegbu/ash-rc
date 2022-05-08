@@ -207,7 +207,7 @@ class LoginPage extends StatelessWidget {
     if (response.statusCode == 200) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => HomeScreen(
-                userId: jsonDecode(response.body),
+              //userId: jsonDecode(response.body),
               )));
     } else {
       // throw Exception('Unsuccessful login');

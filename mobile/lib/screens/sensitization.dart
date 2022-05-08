@@ -5,6 +5,8 @@ import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/report_incident.dart';
 import 'package:mobile/screens/sosbutton_screen.dart';
 
+import 'home_screen.dart';
+
 class Sensitization extends StatefulWidget {
   const Sensitization({Key? key}) : super(key: key);
 
@@ -13,7 +15,17 @@ class Sensitization extends StatefulWidget {
 }
 
 class _Sensitization extends State<Sensitization> {
-  int currentIndex = 0;
+  int currentIndex = 1;
+
+  List<Widget> screens = [
+    HomeScreen(
+        //userId: -1,
+        ),
+    Sensitization(),
+    MyForm(),
+    ChatBotScreen(),
+    sosbutton_screen()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +120,9 @@ class _Sensitization extends State<Sensitization> {
                             style:
                                 TextStyle(fontSize: 24.0, color: Colors.white)),
                         onTap: () {
-                          Navigator.pop(context);
+                          // Navigator.pop(context);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Sensitization()));
                         },
                       ),
                       ListTile(
@@ -121,7 +135,7 @@ class _Sensitization extends State<Sensitization> {
                             style:
                                 TextStyle(fontSize: 24.0, color: Colors.white)),
                         onTap: () {
-                          Navigator.pop(context);
+                          // Navigator.pop(context);
                         },
                       ),
                     ],
@@ -361,41 +375,11 @@ class _Sensitization extends State<Sensitization> {
           ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex: 1,
-            
+            currentIndex: currentIndex,
             onTap: (index) => {
-              setState((){
-
-              },
-              ),
-              
               if (index != currentIndex)
-                if (index == 0)
-                  {
-                   // Navigator.of(context).push(
-                      //MaterialPageRoute(
-                        //builder: (context) => screens[index])),
-                  },
-              if (index == 1)
-                {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) =>const Sensitization())),
-                },
-              if (index == 2)
-                {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const MyForm())),
-                },
-                
-              if (index == 3){
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const ChatBotScreen())),
-                },
-
-              if(index==4){
-                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const sosbutton_screen())),
-              },
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => screens[index]))
             },
             items: const [
               BottomNavigationBarItem(
@@ -422,7 +406,6 @@ class _Sensitization extends State<Sensitization> {
             ],
             backgroundColor: Colors.white,
             selectedItemColor: Color.fromRGBO(146, 61, 65, 1),
-            
           ),
         ),
       ),

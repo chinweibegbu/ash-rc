@@ -15,7 +15,17 @@ class ChatBotScreen extends StatefulWidget {
 }
 
 class _ChatBotScreenState extends State<ChatBotScreen> {
-  int currentIndex = 0;
+  int currentIndex = 3;
+
+  List<Widget> screens = [
+    HomeScreen(
+        //userId: -1,
+        ),
+    Sensitization(),
+    MyForm(),
+    ChatBotScreen(),
+    sosbutton_screen()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -184,22 +194,26 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Container(
-                    padding: EdgeInsets.only(left: 16, right: 16, bottom: 10, top: 10),
-                        child: Align(
-                          alignment: (messages[index].messageType == "receiver"?Alignment.topLeft:Alignment.topRight),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: (messages[index].messageType  == "receiver"?Color.fromARGB(156, 139, 139, 139):Color.fromRGBO(146, 61, 65, 1)),
-                            ),
-                            padding: EdgeInsets.all(16),
-                            child: Text(messages[index].messageContent, style: 
-                            TextStyle(fontSize: 15,
-                            color:Colors.white),
-                            ),
+                      padding: EdgeInsets.only(
+                          left: 16, right: 16, bottom: 10, top: 10),
+                      child: Align(
+                        alignment: (messages[index].messageType == "receiver"
+                            ? Alignment.topLeft
+                            : Alignment.topRight),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: (messages[index].messageType == "receiver"
+                                ? Color.fromARGB(156, 139, 139, 139)
+                                : Color.fromRGBO(146, 61, 65, 1)),
                           ),
-                        )
-                  );
+                          padding: EdgeInsets.all(16),
+                          child: Text(
+                            messages[index].messageContent,
+                            style: TextStyle(fontSize: 15, color: Colors.white),
+                          ),
+                        ),
+                      ));
                 }),
           ]),
           /*Column(children: [
@@ -246,36 +260,13 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
             ),
             
           ]),*/
-bottomNavigationBar: BottomNavigationBar(
+          bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex: 3,
+            currentIndex: currentIndex,
             onTap: (index) => {
               if (index != currentIndex)
-                if (index == 0)
-                  {
-                    Navigator.of(context).push(MaterialPageRoute(
-                       builder: (context) => screens[index])),
-                  },
-              if (index == 1)
-                {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Sensitization())),
-                },
-              if (index == 2)
-                {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const MyForm())),
-                },
-                
-              if (index == 3){
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const ChatBotScreen())),
-                },
-
-              if(index==4){
-                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const sosbutton_screen())),
-              },
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => screens[index]))
             },
             items: const [
               BottomNavigationBarItem(
@@ -308,7 +299,6 @@ bottomNavigationBar: BottomNavigationBar(
   }
 }
 
-
 class ChatMessage {
   String messageContent;
   String messageType;
@@ -321,6 +311,6 @@ List<ChatMessage> messages = [
   ChatMessage(
       messageContent: "I want to make an assault report",
       messageType: "sender"),
-  ChatMessage(messageContent: "Click here to make a report", messageType: "receiver"),
-  
+  ChatMessage(
+      messageContent: "Click here to make a report", messageType: "receiver"),
 ];
