@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mobile/screens/forgot-pw.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/reg-email-conf.dart';
 import 'package:mobile/screens/reg-new-user.dart';
@@ -94,38 +95,14 @@ class LoginPage extends StatelessWidget {
                               inputAction: TextInputAction.done,
                               controller: passwordController,
                             ),
-                            // Container( //duplicate Email Contianer for password
-                            //   decoration: BoxDecoration(
-                            //     color: (Colors.white),
-                            //     borderRadius: BorderRadius.circular(16),
-                            //     ),
-                            //   child: TextField(
-                            //     decoration: InputDecoration(
-                            //       contentPadding:
-                            //         const EdgeInsets.symmetric
-                            //         (vertical: 20),
-                            //       border: InputBorder.none,
-                            //       hintText: 'Ashesi Email',
-                            //       prefixIcon: Padding(
-                            //         padding: const EdgeInsets.
-                            //         symmetric(horizontal: 20.0),
-                            //         child: Icon(
-                            //           FontAwesomeIcons.solidEnvelope,
-                            //           color: Colors.white,
-                            //           size: 30
-                            //         ),
-                            //       ),
-                            //       hintStyle: bodyText, //font of hint
-                            //     ),
-                            //     style: bodyText,
-                            //     keyboardType: TextInputType.
-                            //     emailAddress,
-                            //     textInputAction: TextInputAction.next, // next button to move to next firle
-                            //   ),
-                            // ),
-                            Text(
-                              'Forgot Password?',
-                              style: inputText,
+                            GestureDetector(
+                              onTap: () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => ForgotPassword())),
+                              child: Text(
+                                'Forgot Password?',
+                                style: inputText,
+                              ),
                             ),
                           ],
                         ),
@@ -209,7 +186,7 @@ class LoginPage extends StatelessWidget {
     if (response.statusCode == 200) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => HomeScreen(
-                userId: int.parse(response.body),
+                userId: jsonDecode(response.body),
               )));
     } else {
       // throw Exception('Unsuccessful login');
