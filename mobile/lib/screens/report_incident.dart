@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/home_screen.dart';
+import 'package:mobile/screens/loginpage.dart';
 import 'package:mobile/screens/report-complete.dart';
 import 'package:mobile/screens/request_help.dart';
 import 'package:mobile/screens/sensitization.dart';
@@ -90,7 +91,7 @@ class _MyFormState extends State<MyForm> {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: Text(
-                          'Miriam Duke',
+                          'Anonymous',
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       )
@@ -177,6 +178,24 @@ class _MyFormState extends State<MyForm> {
                             style:
                                 TextStyle(fontSize: 24.0, color: Colors.white)),
                         onTap: () {},
+                      ),
+                      SizedBox(
+                        height: 70.0,
+                      ),
+                      ListTile(
+                        leading: const Icon(
+                          Icons.arrow_circle_left_outlined,
+                          color: Colors.white,
+                          size: 24.0,
+                        ),
+                        title: const Text('Log Out',
+                            style:
+                                TextStyle(fontSize: 24.0, color: Colors.white)),
+                        onTap: () {
+                          //Navigator.pop(context);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LoginPage()));
+                        },
                       ),
                     ],
                   ),

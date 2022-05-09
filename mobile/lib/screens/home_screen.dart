@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:mobile/screens/loginpage.dart';
 import 'package:mobile/screens/report_incident.dart';
 import 'package:mobile/screens/request_help.dart';
 import 'package:mobile/screens/sensitization.dart';
@@ -54,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: Text(
-                          'Miriam Duke',
+                          'Anonymous',
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       )
@@ -141,6 +142,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                 TextStyle(fontSize: 24.0, color: Colors.white)),
                         onTap: () {
                           //Navigator.pop(context);
+                        },
+                      ),
+                      SizedBox(
+                        height: 70.0,
+                      ),
+                      ListTile(
+                        leading: const Icon(
+                          Icons.arrow_circle_left_outlined,
+                          color: Colors.white,
+                          size: 24.0,
+                        ),
+                        title: const Text('Log Out',
+                            style:
+                                TextStyle(fontSize: 24.0, color: Colors.white)),
+                        onTap: () {
+                          //Navigator.pop(context);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LoginPage()));
                         },
                       ),
                     ],
