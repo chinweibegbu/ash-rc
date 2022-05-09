@@ -46,7 +46,13 @@ public class RequestController {
 
     @GetMapping
     public List<Request> getAllRequests() {
-        return requestRepo.findAll();
+        List<Request> requests = requestRepo.findAll();
+        
+        for(Request r: requests) {
+            r.setUser(null);
+        }
+
+        return requests;
     }
 
     @GetMapping(path="/user/{userId}")
@@ -114,6 +120,11 @@ public class RequestController {
         RespondentDetails respondent = respondentRepo.findById(respondentId).get();
         respondent.getRequests().add(request);
         respondentRepo.save(respondent);
+
+        // Add request to respondent's request
+        UserDetails user = userRepo.findById(userId).get();
+        user.getRequests().add(request);
+        userRepo.save(user);
 
         // Save request
         requestRepo.save(request);

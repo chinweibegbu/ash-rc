@@ -19,7 +19,7 @@ public class Request {
     @JoinColumn(name="respondent_ID")
     private RespondentDetails respondent; //FK
     private String requestedServices;
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToOne
     @JoinColumn(name="userId")
     private UserDetails user; //FK
