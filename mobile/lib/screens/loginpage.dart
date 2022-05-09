@@ -8,6 +8,7 @@ import 'package:mobile/screens/forgot-pw.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/reg-email-conf.dart';
 import 'package:mobile/screens/reg-new-user.dart';
+import 'package:mobile/screens/report_incident_anon.dart';
 import 'package:mobile/widgets/ashesilogo.dart';
 import '../palatte.dart';
 import '../widgets/password-input.dart';
@@ -36,7 +37,7 @@ class LoginPage extends StatelessWidget {
               child: SafeArea(
                 child: Column(
                   children: [
-                    SizedBox(height: 20),
+                    SizedBox(height: 30),
                     Container(
                       width: double.infinity,
                       alignment: Alignment.topCenter,
@@ -48,7 +49,7 @@ class LoginPage extends StatelessWidget {
                     SizedBox(
                         height: 10), // space between Safe Haven and notif bar
                     Container(
-                      height: 156, // space between Safe Haven label and Email
+                      height: 90, // space between Safe Haven label and Email
                       // maximum width
                       // child: Center(
                       child: Padding(
@@ -65,18 +66,18 @@ class LoginPage extends StatelessWidget {
                             Align(
                               alignment: Alignment(-25, 1),
                               child: Text(
-                                'Promoting a safe and secure campus',
+                                'Promoting a safe and secure community and campus',
                                 style: safeAndSec,
                               ),
                             ),
-                            SizedBox(height: 9),
-                            Align(
-                              alignment: Alignment(-20, 1),
-                              child: Text(
-                                'Safe Haven provides students with resources to securely report instances of sexual violence.',
-                                style: caption,
-                              ),
-                            ),
+                            // SizedBox(height: 9),
+                            // Align(
+                            //   alignment: Alignment(-20, 1),
+                            //   child: Text(
+                            //     'Safe Haven provides students with resources to securely report instances of sexual violence.',
+                            //     style: caption,
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -175,6 +176,29 @@ class LoginPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              SizedBox(height: 20.0),
+                              Container(
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                  bottom:
+                                      BorderSide(color: Colors.white, width: 1),
+                                )),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MyAnonForm()));
+                                  },
+                                  child: Text(
+                                    'Make an anonymous report',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        color: Color.fromRGBO(146, 61, 65, 1),
+                                        decoration: TextDecoration.underline),
+                                  ),
+                                ),
+                              ),
                               SizedBox(
                                 height: 30,
                               )
@@ -195,7 +219,7 @@ class LoginPage extends StatelessWidget {
 
   Future<void> loginUser(
       String email, String password, BuildContext context) async {
-    print(email);
+    //print(email);
     final response = await http.post(
       Uri.parse('http://10.0.2.2:8081/user/login'),
       headers: <String, String>{

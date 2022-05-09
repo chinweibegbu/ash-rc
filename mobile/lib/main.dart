@@ -9,6 +9,7 @@ import 'package:mobile/screens/forgot-pw.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/reg-new-user.dart';
 import 'package:mobile/screens/report_incident.dart';
+import 'package:mobile/screens/request_help.dart';
 import 'package:mobile/screens/reset-passw.dart';
 import 'package:mobile/screens/sensitization.dart';
 import 'package:mobile/screens/home_screen.dart';

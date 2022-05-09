@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/report_incident.dart';
+import 'package:mobile/screens/request_help.dart';
 import 'package:mobile/screens/sensitization.dart';
 import 'package:mobile/screens/sosbutton_screen.dart';
 
@@ -77,17 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       ListTile(
                         leading: const Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                        title: const Text('My profile',
-                            style:
-                                TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: const Icon(
                           Icons.people,
                           color: Colors.white,
                           size: 24.0,
@@ -109,6 +99,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => MyForm()));
+                        },
+                      ),
+                      ListTile(
+                        leading: const Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 24.0,
+                        ),
+                        title: const Text('Request Help',
+                            style:
+                                TextStyle(fontSize: 24.0, color: Colors.white)),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => RequestForm()));
                         },
                       ),
                       ListTile(

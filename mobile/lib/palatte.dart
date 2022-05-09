@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 const TextStyle safeHavenHeading = TextStyle(
-  fontSize: 35,
+  fontSize: 30,
   fontWeight: FontWeight.bold,
   color: Colors.black,
 );
@@ -21,7 +21,7 @@ const TextStyle redButton = TextStyle(
 );
 
 const TextStyle safeAndSec = TextStyle(
-  fontSize: 25,
+  fontSize: 20,
   fontWeight: FontWeight.bold,
   color: Color.fromRGBO(146, 61, 65, 1),
 );

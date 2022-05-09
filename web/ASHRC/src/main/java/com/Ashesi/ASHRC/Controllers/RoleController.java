@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 
 import java.util.List;
@@ -36,6 +37,17 @@ public class RoleController {
     @GetMapping
     public List<RoleDetails> getAllRoles() {
         return roleRepo.findAll();
+    }
+
+    @GetMapping(path="{roleName}")
+    public RoleDetails getRoleByName(@PathVariable("roleName") String roleName) {
+        Optional<RoleDetails> role = roleRepo.getRoleDetailsByRole(roleName);
+		
+		if(!role.isPresent()) {
+			throw new IllegalStateException("Role does not exist");
+		}
+
+        return role.get();
     }
     
     @PostMapping

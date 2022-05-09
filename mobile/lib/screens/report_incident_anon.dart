@@ -1,7 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/home_screen.dart';
+import 'package:http/http.dart' as http;
+import 'package:mobile/screens/report-anon-complete.dart';
+import 'package:intl/intl.dart';
 
 class MyAnonForm extends StatefulWidget {
   const MyAnonForm({Key? key}) : super(key: key);
@@ -11,12 +16,19 @@ class MyAnonForm extends StatefulWidget {
 }
 
 class _MyAnonFormState extends State<MyAnonForm> {
+  // Form controllers
+  final incidentDetailsController = TextEditingController();
+
   // Incident form default date
   DateTime selectedDate = DateTime.now();
 
   // Incident form check boxes
   bool isBystanderChecked = false;
   bool isReportChecked = false;
+
+  // Role ID
+  int roleId = 0;
+  int dropDownIndex = 0;
 
   List<Widget> screens = [
     HomeScreen(
@@ -59,9 +71,18 @@ class _MyAnonFormState extends State<MyAnonForm> {
       home: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Report Incident'),
-            backgroundColor: Color.fromRGBO(146, 61, 65, 1),
-          ),
+              title: const Text('Report Incident'),
+              backgroundColor: Color.fromRGBO(146, 61, 65, 1),
+              leading: IconButton(
+                // allows left aligned icon
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )),
           body: SingleChildScrollView(
             child: Form(
               child: Padding(
@@ -91,7 +112,11 @@ class _MyAnonFormState extends State<MyAnonForm> {
                           ])),
                     ),
                     DropdownButtonFormField(
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        setState(() {
+                          dropDownIndex = value as int;
+                        });
+                      },
                       items: communityRoleList,
                       hint: const Text('Select role'),
                       isExpanded: true,
@@ -130,6 +155,7 @@ class _MyAnonFormState extends State<MyAnonForm> {
                         return null;
                       },
                       maxLines: 7,
+                      controller: incidentDetailsController,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
@@ -179,6 +205,7 @@ class _MyAnonFormState extends State<MyAnonForm> {
                       title: const Text(
                         'I am a bystander',
                       ),
+                      key: ValueKey('bystanderCheckbox'),
                     ),
                     OutlinedButton.icon(
                       icon: Icon(
@@ -199,7 +226,19 @@ class _MyAnonFormState extends State<MyAnonForm> {
                               (states) => Size(275.0, 10.0))),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        DateFormat formatter = DateFormat('yyyy-MM-dd');
+                        String periodOfIncident =
+                            formatter.format(selectedDate);
+                        setRoleId();
+
+                        submitIncident(
+                            incidentDetailsController.text,
+                            periodOfIncident,
+                            isBystanderChecked,
+                            roleId,
+                            context);
+                      },
                       child: const Text('Submit'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateColor.resolveWith(
@@ -229,5 +268,50 @@ class _MyAnonFormState extends State<MyAnonForm> {
       setState(() {
         selectedDate = selected;
       });
+  }
+
+  void setRoleId() {
+    switch (dropDownIndex) {
+      case 0:
+        roleId = 5;
+        break;
+      case 1:
+        roleId = 24;
+        break;
+      case 2:
+        roleId = 23;
+        break;
+      case 3:
+        roleId = 53;
+        break;
+      default:
+        roleId = 5;
+        break;
+    }
+  }
+
+  Future<void> submitIncident(String incidentDetails, String periodOfIncident,
+      bool isWhistleBlower, int roleId, BuildContext context) async {
+    //print(email);
+    final response = await http.post(
+      Uri.parse('http://10.0.2.2:8081/incident'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({
+        "incidentDetails": incidentDetails,
+        "periodOfIncident": periodOfIncident,
+        "isWhistleBlower": isWhistleBlower,
+        "isReport": false,
+        "role": {"roleId": roleId}
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => AnonReportComplete()));
+    } else {
+      throw Exception('Unsuccessful anonymous form reporting');
+    }
   }
 }

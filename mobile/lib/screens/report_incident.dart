@@ -1,10 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/home_screen.dart';
+import 'package:mobile/screens/report-complete.dart';
+import 'package:mobile/screens/request_help.dart';
 import 'package:mobile/screens/sensitization.dart';
 import 'package:mobile/screens/sosbutton_screen.dart';
+import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
 
 class MyForm extends StatefulWidget {
   const MyForm({Key? key}) : super(key: key);
@@ -17,12 +23,19 @@ class _MyFormState extends State<MyForm> {
   // Index of current screen (reference: bottom navigation bar)
   int currentIndex = 2;
 
+  // Form controllers
+  final incidentDetailsController = TextEditingController();
+
   // Incident form default date
   DateTime selectedDate = DateTime.now();
 
   // Incident form check boxes
   bool isBystanderChecked = false;
   bool isReportChecked = false;
+
+  // Role ID
+  int roleId = 0;
+  int dropDownIndex = 0;
 
   List<Widget> screens = [
     HomeScreen(
@@ -106,17 +119,6 @@ class _MyFormState extends State<MyForm> {
                       ),
                       ListTile(
                         leading: const Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                        title: const Text('My profile',
-                            style:
-                                TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: const Icon(
                           Icons.people,
                           color: Colors.white,
                           size: 24.0,
@@ -136,6 +138,20 @@ class _MyFormState extends State<MyForm> {
                             style:
                                 TextStyle(fontSize: 24.0, color: Colors.white)),
                         onTap: () {},
+                      ),
+                      ListTile(
+                        leading: const Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 24.0,
+                        ),
+                        title: const Text('Request Help',
+                            style:
+                                TextStyle(fontSize: 24.0, color: Colors.white)),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => RequestForm()));
+                        },
                       ),
                       ListTile(
                         leading: const Icon(
@@ -201,7 +217,11 @@ class _MyFormState extends State<MyForm> {
                           ])),
                     ),
                     DropdownButtonFormField(
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        setState(() {
+                          dropDownIndex = value as int;
+                        });
+                      },
                       items: communityRoleList,
                       hint: const Text('Select role'),
                       isExpanded: true,
@@ -240,6 +260,7 @@ class _MyFormState extends State<MyForm> {
                         return null;
                       },
                       maxLines: 10,
+                      controller: incidentDetailsController,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
@@ -324,7 +345,20 @@ class _MyFormState extends State<MyForm> {
                               (states) => Size(275.0, 10.0))),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        DateFormat formatter = DateFormat('yyyy-MM-dd');
+                        String periodOfIncident =
+                            formatter.format(selectedDate);
+                        setRoleId();
+
+                        submitIncident(
+                            incidentDetailsController.text,
+                            periodOfIncident,
+                            isBystanderChecked,
+                            isReportChecked,
+                            roleId,
+                            context);
+                      },
                       child: const Text('Submit'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateColor.resolveWith(
@@ -387,6 +421,56 @@ class _MyFormState extends State<MyForm> {
       setState(() {
         selectedDate = selected;
       });
+    }
+  }
+
+  void setRoleId() {
+    switch (dropDownIndex) {
+      case 0:
+        roleId = 5;
+        break;
+      case 1:
+        roleId = 24;
+        break;
+      case 2:
+        roleId = 23;
+        break;
+      case 3:
+        roleId = 53;
+        break;
+      default:
+        roleId = 5;
+        break;
+    }
+  }
+
+  Future<void> submitIncident(
+      String incidentDetails,
+      String periodOfIncident,
+      bool isWhistleBlower,
+      bool isReport,
+      int roleId,
+      BuildContext context) async {
+    //print(email);
+    final response = await http.post(
+      Uri.parse('http://10.0.2.2:8081/incident'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({
+        "incidentDetails": incidentDetails,
+        "periodOfIncident": periodOfIncident,
+        "isWhistleBlower": isWhistleBlower,
+        "isReport": isReport,
+        "role": {"roleId": roleId}
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => ReportComplete()));
+    } else {
+      throw Exception('Unsuccessful anonymous form reporting');
     }
   }
 }

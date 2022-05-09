@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/report_incident.dart';
+import 'package:mobile/screens/request_help.dart';
 import 'package:mobile/screens/sensitization.dart';
 //import 'package:slide_to_act/slide_to_act.dart';
 
@@ -79,17 +80,6 @@ class _sosbuttonState extends State<sosbutton_screen> {
                       ),
                       ListTile(
                         leading: const Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                        title: const Text('My profile',
-                            style:
-                                TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: const Icon(
                           Icons.people,
                           color: Colors.white,
                           size: 24.0,
@@ -111,6 +101,20 @@ class _sosbuttonState extends State<sosbutton_screen> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => MyForm()));
+                        },
+                      ),
+                      ListTile(
+                        leading: const Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 24.0,
+                        ),
+                        title: const Text('Request Help',
+                            style:
+                                TextStyle(fontSize: 24.0, color: Colors.white)),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => RequestForm()));
                         },
                       ),
                       ListTile(

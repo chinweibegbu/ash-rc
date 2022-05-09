@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/report_incident.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:mobile/screens/request_help.dart';
 import 'package:mobile/screens/sensitization.dart';
 import 'package:mobile/screens/sosbutton_screen.dart';
 
@@ -29,8 +30,8 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var child;
-    var screens;
+    // var child;
+    // var screens;
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -77,17 +78,6 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                       ),
                       ListTile(
                         leading: const Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                        title: const Text('My profile',
-                            style:
-                                TextStyle(fontSize: 24.0, color: Colors.white)),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: const Icon(
                           Icons.people,
                           color: Colors.white,
                           size: 24.0,
@@ -113,6 +103,20 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                       ),
                       ListTile(
                         leading: const Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 24.0,
+                        ),
+                        title: const Text('Request Help',
+                            style:
+                                TextStyle(fontSize: 24.0, color: Colors.white)),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => RequestForm()));
+                        },
+                      ),
+                      ListTile(
+                        leading: const Icon(
                           Icons.info,
                           color: Colors.white,
                           size: 24.0,
@@ -121,7 +125,9 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                             style:
                                 TextStyle(fontSize: 24.0, color: Colors.white)),
                         onTap: () {
-                          Navigator.pop(context);
+                          //Navigator.pop(context);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Sensitization()));
                         },
                       ),
                       ListTile(
@@ -134,7 +140,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                             style:
                                 TextStyle(fontSize: 24.0, color: Colors.white)),
                         onTap: () {
-                          Navigator.pop(context);
+                          //Navigator.pop(context);
                         },
                       ),
                     ],
@@ -216,50 +222,6 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                       ));
                 }),
           ]),
-          /*Column(children: [
-            Container(
-              width: 300,
-              alignment: Alignment.bottomLeft,
-              padding: EdgeInsets.only(top:20),
-              child: Row(
-                
-                children: <Widget>[
-                  
-                  Flexible(
-                    child: TextField(
-                    decoration: InputDecoration(
-                      labelText: "Enter Message Here...",
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Color.fromRGBO(146, 61, 65, 1), width: 5),
-                      ),
-                    ),
-                    cursorHeight: 30,
-                    style: TextStyle(fontSize: 13),
-                  )),
-                ],
-              ),
-            ),
-            Column(
-              children:[
-                Container(
-              padding:EdgeInsets.only(left: 345) ,
-              child: ElevatedButton(
-                
-                style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(146, 61, 65, 1)),
-                    
-                child: Text(
-                  "Send",
-                ),
-                onPressed: () {},
-              ),
-            ),
-              ]
-              
-            ),
-            
-          ]),*/
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: currentIndex,
