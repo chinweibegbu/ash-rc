@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:mobile/screens/back-to-home.dart';
+import 'package:mobile/screens/chatbot_screen.dart';
 import 'package:mobile/screens/reg-complete.dart';
 import 'package:mobile/screens/reg-conf-code.dart';
 import 'package:mobile/screens/reg-email-conf.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ASH-RC',
       // ignore: prefer_const_constructors
-      home: LoginPage(),
+      home: ChatBotScreen(),
     );
   }
 }
