@@ -32,6 +32,9 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   Widget build(BuildContext context) {
     // var child;
     // var screens;
+    // var child;
+    // var screens;
+    String? _result;
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -173,6 +176,9 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                     SizedBox(width: 15),
                     Expanded(
                       child: TextField(
+                        onChanged: (value) => setState(() {
+                          _result = value;
+                        }),
                         decoration: InputDecoration(
                           hintText: "Enter Desired Message here...",
                           hintStyle: TextStyle(
@@ -184,7 +190,11 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                     ),
                     SizedBox(width: 15),
                     FloatingActionButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        messages.add(ChatMessage(
+                            messageContent: _result.toString(),
+                            messageType: "sender"));
+                      },
                       child: Icon(Icons.send, color: Colors.white, size: 18),
                       backgroundColor: Color.fromRGBO(146, 61, 65, 1),
                       elevation: 0,
