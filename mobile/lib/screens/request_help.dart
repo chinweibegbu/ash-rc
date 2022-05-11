@@ -202,7 +202,7 @@ class _RequestFormState extends State<RequestForm> {
             ),
           ),
           appBar: AppBar(
-            title: const Text('Report Incident'),
+            title: const Text('Request Help'),
             backgroundColor: Color.fromRGBO(146, 61, 65, 1),
           ),
           body: SingleChildScrollView(
