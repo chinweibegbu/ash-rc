@@ -1,7 +1,7 @@
 # Ashesi Sexual Harassment Reporting and Counselling (ASH-RC) System
 CS 415 Software Engineering Final Project
 
-This is a system for anonynous sexual harrasment reporting and service access for the Ashesi University community.
+This is a system for anonymous sexual harassment reporting and service access for the Ashesi University community.
 
 Resource person: **Dr Millicent Adjei** (Head, Office of Diversity and Inclusion Programs, Ashesi University)
 
