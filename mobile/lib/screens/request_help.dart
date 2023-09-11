@@ -48,6 +48,14 @@ class _RequestFormState extends State<RequestForm> {
 
   List<DropdownMenuItem<int>> communityRoleList = [
     const DropdownMenuItem(
+      child: Text('Evonne Sauda'),
+      value: 5,
+    ),
+    const DropdownMenuItem(
+      child: Text('Millicent Adjei'),
+      value: 4,
+    ),
+    const DropdownMenuItem(
       child: Text('Diane Davis'),
       value: 3,
     ),
@@ -60,7 +68,7 @@ class _RequestFormState extends State<RequestForm> {
       value: 1,
     ),
     const DropdownMenuItem(
-      child: Text('Evonne Saudu'),
+      child: Text('Emmanuel Ntow'),
       value: 0,
     )
   ];
@@ -349,7 +357,7 @@ class _RequestFormState extends State<RequestForm> {
 
                         // Submit request to server
                         submitRequest(
-                            completeRequest, respondentId, 40, context);
+                            completeRequest, respondentId, 13, context);
                       },
                       child: const Text('Submit'),
                       style: ButtonStyle(
@@ -407,24 +415,32 @@ class _RequestFormState extends State<RequestForm> {
 
   void setRespondentId() {
     switch (dropDownIndex) {
-      // Evonne Saudu
+      // Emmanuel Ntow
       case 0:
-        respondentId = 56;
+        respondentId = 5;
         break;
       // Bridgette Ankasah
       case 1:
-        respondentId = 16;
+        respondentId = 3;
         break;
       // Salim Wangabi
       case 2:
-        respondentId = 17;
+        respondentId = 4;
         break;
       // Diane Davis
       case 3:
-        respondentId = 57;
+        respondentId = 2;
+        break;
+      // Millicent Adjei
+      case 4:
+        respondentId = 1;
+        break;
+      // Evonne Sauda
+      case 5:
+        respondentId = 6;
         break;
       default:
-        respondentId = 5;
+        respondentId = 1;
         break;
     }
   }

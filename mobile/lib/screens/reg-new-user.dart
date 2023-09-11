@@ -167,13 +167,13 @@ class UserRegistration extends StatelessWidget {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, dynamic>{
-        'firstName': firstName,
-        'lastName': lastName,
+        'f_name': firstName,
+        'l_name': lastName,
         'gender': gender,
         'yearGroup': graduationYear,
         'email': email,
         'password': password,
-        'role': {"roleId": 5}
+        'role': {"roleId": 3}
       }),
     );
 

@@ -273,19 +273,19 @@ class _MyAnonFormState extends State<MyAnonForm> {
   void setRoleId() {
     switch (dropDownIndex) {
       case 0:
-        roleId = 5;
+        roleId = 3;
         break;
       case 1:
-        roleId = 24;
+        roleId = 4;
         break;
       case 2:
-        roleId = 23;
+        roleId = 4;
         break;
       case 3:
-        roleId = 53;
+        roleId = 4;
         break;
       default:
-        roleId = 5;
+        roleId = 3;
         break;
     }
   }
@@ -303,7 +303,8 @@ class _MyAnonFormState extends State<MyAnonForm> {
         "periodOfIncident": periodOfIncident,
         "isWhistleBlower": isWhistleBlower,
         "isReport": false,
-        "role": {"roleId": roleId}
+        "role": {"roleId": roleId},
+        "status": 1
       }),
     );
 

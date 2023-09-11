@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="24cf9ca6-9ecc-485e-a0ab-7531e1d19ff9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/lib/screens/reg-new-user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/lib/screens/reg-new-user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/lib/screens/report_incident.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/lib/screens/report_incident.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/lib/screens/report_incident_anon.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/lib/screens/report_incident_anon.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/lib/screens/request_help.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/lib/screens/request_help.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/ASHRC/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/ASHRC/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/ASHRC/src/main/java/com/Ashesi/ASHRC/AshrcApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/ASHRC/src/main/java/com/Ashesi/ASHRC/AshrcApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/ASHRC/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/web/ASHRC/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 
 
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+// @SpringBootApplication
 public class AshrcApplication {
 
 	public static void main(String[] args) {
